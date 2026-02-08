@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <!-- Kid-Friendly Color Palette -->
+    <Color x:Key="GamePrimary">#FF6B6B</Color>      <!-- Soft Red -->
+    <Color x:Key="GameSecondary">#4ECDC4</Color>    <!-- Teal/Turquoise -->
+    <Color x:Key="GameAccent">#FFE66D</Color>       <!-- Pastel Yellow -->
+    <Color x:Key="GameBackground">#F7FFF7</Color>   <!-- Off-white Mint -->
+    <Color x:Key="GameText">#292F36</Color>         <!-- Dark Charcoal -->
+    
+    <Color x:Key="GameSuccess">#95D5B2</Color>      <!-- Success Green -->
+    <Color x:Key="GameError">#FF9F1C</Color>        <!-- Warning Orange -->
+
+    <!-- Styles -->
+    <Style x:Key="GameTitleLabel" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource GamePrimary}" />
+        <Setter Property="FontSize" Value="28" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+    </Style>
+
+    <Style x:Key="GameButton" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="{StaticResource GameSecondary}" />
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="CornerRadius" Value="25" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="Padding" Value="20,10" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="Shadow">
+            <Shadow Brush="Black" Offset="2,2" Opacity="0.2" />
+        </Setter>
+    </Style>
+    
+    <Style x:Key="GameCard" TargetType="Border">
+        <Setter Property="StrokeShape">
+            <RoundRectangle CornerRadius="20" />
+        </Setter>
+        <Setter Property="Stroke" Value="{StaticResource GameSecondary}" />
+        <Setter Property="StrokeThickness" Value="4" />
+        <Setter Property="BackgroundColor" Value="White" />
+        <Setter Property="Padding" Value="10" />
+    </Style>
+
+</ResourceDictionary>

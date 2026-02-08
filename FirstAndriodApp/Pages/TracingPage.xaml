@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="FirstAndriodApp.Pages.TracingPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pageModels="clr-namespace:FirstAndriodApp.PageModels"
+    Title="Alphabet Tracing">
+
+    <Grid RowDefinitions="Auto,Auto,*,Auto" Padding="16" BackgroundColor="{StaticResource GameBackground}">
+        <Label
+            Grid.Row="0"
+            Text="Trace the Letter!"
+            Style="{StaticResource GameTitleLabel}" />
+
+        <Label
+            Grid.Row="1"
+            Text="{Binding StatusText}"
+            FontSize="16"
+            HorizontalOptions="Center" 
+            Margin="0,0,0,10"/>
+
+        <!-- Tracing Area -->
+        <Grid Grid.Row="2" BackgroundColor="White" Margin="20">
+            <!-- Background Letter Template -->
+            <Image 
+                Source="{Binding CurrentLetterImage}" 
+                Aspect="AspectFit" 
+                Opacity="0.3" 
+                HorizontalOptions="Fill" 
+                VerticalOptions="Fill" />
+                
+            <!-- Dotted Guide Overlay (Optional, could be part of image) -->
+            
+            <!-- Drawing Canvas -->
+            <GraphicsView
+                x:Name="DrawingCanvas"
+                StartInteraction="DrawingCanvas_StartInteraction"
+                DragInteraction="DrawingCanvas_DragInteraction"
+                EndInteraction="DrawingCanvas_EndInteraction"
+                InputTransparent="False"
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill" />
+        </Grid>
+
+        <HorizontalStackLayout Grid.Row="3" Spacing="20" HorizontalOptions="Center" Margin="0,20">
+            <Button
+                Text="Reset"
+                Clicked="Reset_Clicked"
+                Style="{StaticResource GameButton}"
+                BackgroundColor="#FF6B6B" />
+            
+            <Button
+                Text="Done"
+                Command="{Binding CompleteLetterCommand}"
+                Style="{StaticResource GameButton}"
+                BackgroundColor="#26de81" />
+        </HorizontalStackLayout>
+    </Grid>
+</ContentPage>

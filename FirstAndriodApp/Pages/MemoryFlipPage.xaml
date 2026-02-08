@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="FirstAndriodApp.Pages.MemoryFlipPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pageModels="clr-namespace:FirstAndriodApp.PageModels"
+    xmlns:models="clr-namespace:FirstAndriodApp.Models"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    x:DataType="pageModels:MemoryFlipPageModel"
+    Title="Memory Flip">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid Padding="16" RowDefinitions="Auto,Auto,*" RowSpacing="12">
+        <Grid Grid.Row="0" ColumnDefinitions="*,Auto" ColumnSpacing="12">
+            <Label Text="{Binding StatusText}" FontSize="16" VerticalOptions="Center" />
+            <Button Grid.Column="1" Text="Reset" Clicked="Reset_Clicked" />
+        </Grid>
+
+        <Label
+            Grid.Row="1"
+            Text="{Binding Moves, StringFormat='Moves: {0}'}"
+            FontSize="14"
+            TextColor="#666666" />
+
+        <CollectionView
+            Grid.Row="2"
+            ItemsSource="{Binding Cards}"
+            SelectionMode="None">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" Span="3" HorizontalItemSpacing="10" VerticalItemSpacing="10" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:MemoryCard">
+                    <Border Stroke="#E0E0E0" StrokeThickness="1" BackgroundColor="#FFFFFF">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="14" />
+                        </Border.StrokeShape>
+                        <Grid HeightRequest="110" WidthRequest="110">
+                            <Button
+                                Padding="0"
+                                BackgroundColor="Transparent"
+                                Clicked="Card_Clicked"
+                                CommandParameter="{Binding .}" />
+
+                            <Image
+                                IsVisible="{Binding IsFlipped}"
+                                Source="{Binding Image, StringFormat='{0}'}"
+                                HeightRequest="70"
+                                WidthRequest="70"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center"
+                                Aspect="AspectFit" />
+
+                            <Grid IsVisible="{Binding IsFlipped, Converter={StaticResource InvertedBoolConverter}}">
+                                <Label Text="?" FontSize="34" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#888888" />
+                            </Grid>
+
+                            <BoxView
+                                IsVisible="{Binding IsMatched}"
+                                Color="#66C8E6C9" />
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

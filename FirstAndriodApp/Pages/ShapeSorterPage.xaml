@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="FirstAndriodApp.Pages.ShapeSorterPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:FirstAndriodApp.Models"
+    Title="Shape Sorter">
+
+    <Grid RowDefinitions="Auto,Auto,*,Auto" Padding="16" BackgroundColor="{StaticResource GameBackground}">
+        <Label
+            Grid.Row="0"
+            Text="Sort the shapes!"
+            Style="{StaticResource GameTitleLabel}" />
+
+        <Button
+            Grid.Row="1"
+            Text="Reset"
+            Style="{StaticResource GameButton}"
+            HorizontalOptions="Center"
+            Clicked="Reset_Clicked"
+            Margin="0,10" />
+
+        <!-- Draggable Shapes Area -->
+        <ScrollView Grid.Row="2">
+            <FlexLayout BindableLayout.ItemsSource="{Binding Shapes}" Wrap="Wrap" JustifyContent="Center">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate x:DataType="models:MatchItem">
+                        <Image
+                            Source="{Binding ObjectImage}"
+                            HeightRequest="80"
+                            WidthRequest="80"
+                            Margin="10">
+                            <Image.GestureRecognizers>
+                                <PanGestureRecognizer PanUpdated="Shape_PanUpdated" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </FlexLayout>
+        </ScrollView>
+
+        <!-- Bins Area -->
+        <Grid Grid.Row="3" ColumnDefinitions="*,*,*" HeightRequest="120" ColumnSpacing="10">
+            <!-- Bin Circle -->
+            <Border Grid.Column="0" StrokeThickness="0" BackgroundColor="#E0E0E0" Padding="10">
+                <Border.StrokeShape><RoundRectangle CornerRadius="10" /></Border.StrokeShape>
+                <VerticalStackLayout>
+                    <Image Source="bin_circle.png" HeightRequest="60" WidthRequest="60" HorizontalOptions="Center" />
+                    <Label Text="Circle" HorizontalOptions="Center" />
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Bin Square -->
+            <Border Grid.Column="1" StrokeThickness="0" BackgroundColor="#E0E0E0" Padding="10">
+                <Border.StrokeShape><RoundRectangle CornerRadius="10" /></Border.StrokeShape>
+                <VerticalStackLayout>
+                    <Image Source="bin_square.png" HeightRequest="60" WidthRequest="60" HorizontalOptions="Center" />
+                    <Label Text="Square" HorizontalOptions="Center" />
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Bin Triangle -->
+            <Border Grid.Column="2" StrokeThickness="0" BackgroundColor="#E0E0E0" Padding="10">
+                <Border.StrokeShape><RoundRectangle CornerRadius="10" /></Border.StrokeShape>
+                <VerticalStackLayout>
+                    <Image Source="bin_triangle.png" HeightRequest="60" WidthRequest="60" HorizontalOptions="Center" />
+                    <Label Text="Triangle" HorizontalOptions="Center" />
+                </VerticalStackLayout>
+            </Border>
+        </Grid>
+
+        <AbsoluteLayout x:Name="DragOverlay" InputTransparent="True" Grid.RowSpan="4" />
+    </Grid>
+</ContentPage>

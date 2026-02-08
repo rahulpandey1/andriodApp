@@ -1,0 +1,434 @@
+{
+  "matchit": [
+    {
+      "LevelId": 1,
+      "Difficulty": "Easy",
+      "TargetScore": 3,
+      "TimeLimitSeconds": 60,
+      "Items": [
+        {
+          "Id": "star",
+          "Image": "star_color.png",
+          "CorrectMatch": "star_outline.png"
+        },
+        {
+          "Id": "circle",
+          "Image": "circle_color.png",
+          "CorrectMatch": "circle_outline.png"
+        },
+        {
+          "Id": "square",
+          "Image": "square_color.png",
+          "CorrectMatch": "square_outline.png"
+        }
+      ]
+    },
+    {
+      "LevelId": 2,
+      "Difficulty": "Medium",
+      "TargetScore": 4,
+      "TimeLimitSeconds": 45,
+      "Items": [
+        {
+          "Id": "triangle",
+          "Image": "triangle_color.png",
+          "CorrectMatch": "triangle_outline.png"
+        },
+        {
+          "Id": "heart",
+          "Image": "heart_color.png",
+          "CorrectMatch": "heart_outline.png"
+        }
+      ]
+    }
+  ],
+  "memoryflip": [
+    {
+      "LevelId": 1,
+      "Difficulty": "Easy",
+      "TargetScore": 6,
+      "TimeLimitSeconds": 0,
+      "Items": [
+        {
+          "Id": "1",
+          "Image": "card_cat.png"
+        },
+        {
+          "Id": "2",
+          "Image": "card_dog.png"
+        },
+        {
+          "Id": "3",
+          "Image": "card_bird.png"
+        }
+      ]
+    }
+  ],
+  "shadowmatch": [
+    {
+      "LevelId": 1,
+      "Difficulty": "Easy",
+      "TargetScore": 3,
+      "TimeLimitSeconds": 60,
+      "Items": [
+        {
+          "Id": "car",
+          "Image": "car_color.png",
+          "CorrectMatch": "car_shadow.png"
+        },
+        {
+          "Id": "plane",
+          "Image": "plane_color.png",
+          "CorrectMatch": "plane_shadow.png"
+        },
+        {
+          "Id": "boat",
+          "Image": "boat_color.png",
+          "CorrectMatch": "boat_shadow.png"
+        }
+      ]
+    }
+  ],
+  "colormatch": [
+    {
+      "LevelId": 1,
+      "Difficulty": "Find Red",
+      "TargetScore": 3,
+      "TimeLimitSeconds": 30,
+      "Items": [
+        {
+          "Id": "apple",
+          "Image": "apple_red.png",
+          "CorrectMatch": "true"
+        },
+        {
+          "Id": "frog",
+          "Image": "frog_green.png",
+          "CorrectMatch": "false"
+        },
+        {
+          "Id": "cherry",
+          "Image": "cherry_red.png",
+          "CorrectMatch": "true"
+        },
+        {
+          "Id": "banana",
+          "Image": "banana_yellow.png",
+          "CorrectMatch": "false"
+        },
+        {
+          "Id": "strawberry",
+          "Image": "strawberry_red.png",
+          "CorrectMatch": "true"
+        },
+        {
+          "Id": "leaf",
+          "Image": "leaf_green.png",
+          "CorrectMatch": "false"
+        }
+      ]
+    }
+  ],
+  "shapesorter": [
+    {
+      "LevelId": 1,
+      "Difficulty": "Easy",
+      "TargetScore": 4,
+      "TimeLimitSeconds": 60,
+      "Items": [
+        {
+          "Id": "c1",
+          "Image": "circle_red.png",
+          "CorrectMatch": "Circle"
+        },
+        {
+          "Id": "c2",
+          "Image": "circle_blue.png",
+          "CorrectMatch": "Circle"
+        },
+        {
+          "Id": "s1",
+          "Image": "square_green.png",
+          "CorrectMatch": "Square"
+        },
+        {
+          "Id": "t1",
+          "Image": "triangle_yellow.png",
+          "CorrectMatch": "Triangle"
+        }
+      ]
+    }
+  ],
+  "animalmatch": [
+    {
+      "LevelId": 1,
+      "Difficulty": "Listen!",
+      "TargetScore": 4,
+      "TimeLimitSeconds": 0,
+      "Items": [
+        {
+          "Id": "lion",
+          "Image": "animal_lion.png",
+          "CorrectMatch": "sound_lion.mp3"
+        },
+        {
+          "Id": "cow",
+          "Image": "animal_cow.png",
+          "CorrectMatch": "sound_cow.mp3"
+        },
+        {
+          "Id": "dog",
+          "Image": "animal_dog.png",
+          "CorrectMatch": "sound_dog.mp3"
+        },
+        {
+          "Id": "cat",
+          "Image": "animal_cat.png",
+          "CorrectMatch": "sound_cat.mp3"
+        }
+      ]
+    }
+  ],
+  "puzzleslider": [
+    {
+      "LevelId": 1,
+      "Difficulty": "3x3",
+      "TargetScore": 1,
+      "TimeLimitSeconds": 0,
+      "Items": [
+        {
+          "Id": "puppy",
+          "Image": "puzzle_puppy"
+        }
+      ]
+    }
+  ],
+  "jigsawpuzzle": [
+    {
+      "LevelId": 1,
+      "Difficulty": "2x2",
+      "TargetScore": 4,
+      "TimeLimitSeconds": 0,
+      "Items": [
+        {
+          "Id": "cat",
+          "Image": "jigsaw_cat"
+        }
+      ]
+    }
+  ],
+  "alphabettracing": [
+    {
+      "LevelId": 1,
+      "Difficulty": "Letters",
+      "TargetScore": 3,
+      "TimeLimitSeconds": 0,
+      "Items": [
+        {
+          "Id": "A",
+          "Image": "letter_a_trace.png"
+        },
+        {
+          "Id": "B",
+          "Image": "letter_b_trace.png"
+        },
+        {
+          "Id": "C",
+          "Image": "letter_c_trace.png"
+        }
+      ]
+    }
+  ],
+  "connectdots": [
+    {
+      "LevelId": 1,
+      "Difficulty": "1-5",
+      "TargetScore": 5,
+      "TimeLimitSeconds": 0,
+      "Items": [
+        {
+          "Id": "1",
+          "Image": "star_reveal.png",
+          "CorrectMatch": "100,100"
+        },
+        {
+          "Id": "2",
+          "Image": "star_reveal.png",
+          "CorrectMatch": "200,50"
+        },
+        {
+          "Id": "3",
+          "Image": "star_reveal.png",
+          "CorrectMatch": "300,100"
+        },
+        {
+          "Id": "4",
+          "Image": "star_reveal.png",
+          "CorrectMatch": "250,200"
+        },
+        {
+          "Id": "5",
+          "Image": "star_reveal.png",
+          "CorrectMatch": "150,200"
+        }
+      ]
+    }
+  ],
+  "spotthedifference": [
+    {
+      "LevelId": 1,
+      "Difficulty": "Find the Star",
+      "TargetScore": 1,
+      "TimeLimitSeconds": 30,
+      "Items": [
+        {
+          "Id": "d1",
+          "Image": "star_color.png",
+          "CorrectMatch": "150,150"
+        }
+      ]
+    },
+    {
+      "LevelId": 2,
+      "Difficulty": "Find the Circle",
+      "TargetScore": 1,
+      "TimeLimitSeconds": 30,
+      "Items": [
+        {
+          "Id": "d2",
+          "Image": "circle_color.png",
+          "CorrectMatch": "200,80"
+        }
+      ]
+    }
+  ],
+  "colormixing": [
+    {
+      "LevelId": 1,
+      "Difficulty": "Make Orange",
+      "TargetScore": 1,
+      "TimeLimitSeconds": 0,
+      "Items": [
+        {
+          "Id": "target",
+          "Image": "",
+          "CorrectMatch": "#FFA500"
+        }
+      ]
+    },
+    {
+      "LevelId": 2,
+      "Difficulty": "Make Green",
+      "TargetScore": 1,
+      "TimeLimitSeconds": 0,
+      "Items": [
+        {
+          "Id": "target",
+          "Image": "",
+          "CorrectMatch": "#008000"
+        }
+      ]
+    },
+    {
+      "LevelId": 3,
+      "Difficulty": "Make Purple",
+      "TargetScore": 1,
+      "TimeLimitSeconds": 0,
+      "Items": [
+        {
+          "Id": "target",
+          "Image": "",
+          "CorrectMatch": "#800080"
+        }
+      ]
+    }
+  ],
+  "fruitcatch": [
+    {
+      "LevelId": 1,
+      "Difficulty": "Catch 10 Apples",
+      "TargetScore": 10,
+      "TimeLimitSeconds": 45,
+      "Items": [
+        {
+          "Id": "apple",
+          "Image": "apple.png",
+          "CorrectMatch": "1"
+        },
+        {
+          "Id": "banana",
+          "Image": "banana.png",
+          "CorrectMatch": "1"
+        },
+        {
+          "Id": "bomb",
+          "Image": "bomb.png",
+          "CorrectMatch": "-5"
+        }
+      ]
+    }
+  ],
+  "mazerunner": [
+    {
+      "LevelId": 1,
+      "Difficulty": "Easy Maze",
+      "TargetScore": 1,
+      "TimeLimitSeconds": 0,
+      "Items": [
+        {
+          "Id": "maze1",
+          "Image": "",
+          "CorrectMatch": "#S###|#...#|#.###|#...E|#####"
+        }
+      ]
+    },
+    {
+      "LevelId": 2,
+      "Difficulty": "Medium Maze",
+      "TargetScore": 1,
+      "TimeLimitSeconds": 0,
+      "Items": [
+        {
+          "Id": "maze2",
+          "Image": "",
+          "CorrectMatch": "#S#####|#.....#|#.###.#|#.....#|###.###|#...#E#|#######"
+        }
+      ]
+    }
+  ],
+  "balloonpop": [
+    {
+      "LevelId": 1,
+      "Difficulty": "Count 1 to 5",
+      "TargetScore": 5,
+      "TimeLimitSeconds": 0,
+      "Items": [
+        {
+          "Id": "1",
+          "Image": "balloon_red.png",
+          "CorrectMatch": "1"
+        },
+        {
+          "Id": "2",
+          "Image": "balloon_blue.png",
+          "CorrectMatch": "2"
+        },
+        {
+          "Id": "3",
+          "Image": "balloon_green.png",
+          "CorrectMatch": "3"
+        },
+        {
+          "Id": "4",
+          "Image": "balloon_yellow.png",
+          "CorrectMatch": "4"
+        },
+        {
+          "Id": "5",
+          "Image": "balloon_purple.png",
+          "CorrectMatch": "5"
+        }
+      ]
+    }
+  ]
+}

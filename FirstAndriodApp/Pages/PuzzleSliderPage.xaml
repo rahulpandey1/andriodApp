@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="FirstAndriodApp.Pages.PuzzleSliderPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pageModels="clr-namespace:FirstAndriodApp.PageModels"
+
+    xmlns:pages="clr-namespace:FirstAndriodApp.Pages"
+    Title="Puzzle Slider">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <pages:BoolToColorConverter x:Key="BoolToColorConverter" />
+            <pages:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto,Auto,*" Padding="16" BackgroundColor="{StaticResource GameBackground}">
+        <Label
+            Grid.Row="0"
+            Text="Slide to Solve!"
+            Style="{StaticResource GameTitleLabel}" />
+
+        <Label
+            Grid.Row="1"
+            Text="{Binding StatusText}"
+            FontSize="16"
+            HorizontalOptions="Center"
+            Margin="0,0,0,20" />
+
+        <CollectionView
+            Grid.Row="2"
+            ItemsSource="{Binding Tiles}"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            WidthRequest="320"
+            HeightRequest="320">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" Span="3" HorizontalItemSpacing="5" VerticalItemSpacing="5" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="pageModels:PuzzleTile">
+                    <Border
+                        StrokeThickness="0"
+                        BackgroundColor="{Binding IsEmpty, Converter={StaticResource BoolToColorConverter}}" 
+                        HeightRequest="100"
+                        WidthRequest="100">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8" />
+                        </Border.StrokeShape>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer 
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.TileTapCommand}"
+                                CommandParameter="{Binding .}" />
+                        </Border.GestureRecognizers>
+                        <Image
+                            Source="{Binding Image}"
+                            Aspect="AspectFill"
+                            IsVisible="{Binding IsEmpty, Converter={StaticResource InvertedBoolConverter}}" />
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

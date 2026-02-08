@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="FirstAndriodApp.Pages.AnimalMatchPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:FirstAndriodApp.Models"
+    Title="Animal Sounds">
+
+    <Grid RowDefinitions="Auto,Auto,Auto,*" Padding="24" BackgroundColor="{StaticResource GameBackground}">
+        <Label
+            Grid.Row="0"
+            Text="Which animal makes this sound?"
+            Style="{StaticResource GameTitleLabel}" />
+
+        <Label
+            Grid.Row="1"
+            Margin="0,0,0,20"
+            Text="{Binding StatusText}"
+            FontSize="18"
+            HorizontalTextAlignment="Center"
+            TextColor="#666" />
+
+        <!-- Sound Button -->
+        <Border
+            Grid.Row="2"
+            HeightRequest="120"
+            WidthRequest="120"
+            StrokeThickness="4"
+            Stroke="{StaticResource GamePrimary}"
+            BackgroundColor="White"
+            HorizontalOptions="Center"
+            Margin="0,0,0,40">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="60" />
+            </Border.StrokeShape>
+            <Border.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding PlayTargetSoundCommand}" />
+            </Border.GestureRecognizers>
+            <Image
+                Source="icon_speaker.png"
+                HeightRequest="60"
+                WidthRequest="60"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Scale="{Binding IsPlayingSound, Converter={StaticResource BoolToScaleConverter}}" /> <!-- Need converter or trigger -->
+        </Border>
+
+        <!-- Animal Grid -->
+        <CollectionView
+            Grid.Row="3"
+            ItemsSource="{Binding Animals}"
+            SelectionMode="None"
+            VerticalOptions="Center">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" Span="2" HorizontalItemSpacing="20" VerticalItemSpacing="20" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:MatchItem">
+                    <Border
+                        StrokeThickness="0"
+                        BackgroundColor="White"
+                        HeightRequest="140"
+                        Padding="10">
+                        <Border.Shadow>
+                            <Shadow Brush="Black" Offset="0,4" Opacity="0.1" Radius="5" />
+                        </Border.Shadow>
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="20" />
+                        </Border.StrokeShape>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer 
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.CheckAnswerCommand}"
+                                CommandParameter="{Binding .}" />
+                        </Border.GestureRecognizers>
+                        
+                        <VerticalStackLayout Spacing="5" VerticalOptions="Center">
+                            <Image
+                                Source="{Binding ObjectImage}"
+                                HeightRequest="90"
+                                WidthRequest="90"
+                                Aspect="AspectFit" />
+                        </VerticalStackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

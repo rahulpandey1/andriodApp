@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="FirstAndriodApp.Pages.ColorMatchPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:FirstAndriodApp.Models"
+    Title="Color Match">
+
+    <Grid RowDefinitions="Auto,Auto,Auto,*" Padding="16" BackgroundColor="{StaticResource GameBackground}">
+        <Label
+            Grid.Row="0"
+            Text="{Binding InstructionText}"
+            Style="{StaticResource GameTitleLabel}"
+            TextColor="{StaticResource GamePrimary}" />
+
+        <Label
+            Grid.Row="1"
+            Margin="0,8,0,12"
+            Text="{Binding StatusText}"
+            FontSize="16"
+            HorizontalTextAlignment="Center" />
+
+        <Button
+            Grid.Row="2"
+            Text="Reset"
+            Style="{StaticResource GameButton}"
+            HorizontalOptions="Center"
+            Clicked="Reset_Clicked" />
+
+        <CollectionView
+            Grid.Row="3"
+            ItemsSource="{Binding Items}"
+            SelectionMode="None"
+            Margin="0,20,0,0">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" Span="3" HorizontalItemSpacing="15" VerticalItemSpacing="15" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:MatchItem">
+                    <Border
+                        StrokeShape="RoundRectangle 40"
+                        StrokeThickness="0"
+                        BackgroundColor="White"
+                        HeightRequest="100"
+                        WidthRequest="100">
+                        <Border.Shadow>
+                            <Shadow Brush="Black" Offset="2,2" Opacity="0.1" />
+                        </Border.Shadow>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer 
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.TapItemCommand}"
+                                CommandParameter="{Binding .}" />
+                        </Border.GestureRecognizers>
+                        
+                        <Grid>
+                            <!-- The Item Image -->
+                            <Image
+                                Source="{Binding ObjectImage}"
+                                Aspect="AspectFit"
+                                Margin="15"
+                                Opacity="{Binding IsMatched, Converter={StaticResource InvertedBoolConverter}, ConverterParameter=0.3}" /> 
+                                <!-- If IsMatched (tapped and correct), maybe hide or dim? 
+                                     Actually, if correct, we might want to show a checkmark or remove it. 
+                                     Let's dim it if 'IsMatched' means 'Already Found'. 
+                                     But my model might use IsMatched for "Correctly Tapped". -->
+                            
+                            <!-- Checkmark Overlay -->
+                            <Image 
+                                Source="check_icon.png" 
+                                IsVisible="{Binding IsMatched}"
+                                Aspect="AspectFit"
+                                HeightRequest="50"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center" />
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

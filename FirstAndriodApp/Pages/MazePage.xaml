@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="FirstAndriodApp.Pages.MazePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pageModels="clr-namespace:FirstAndriodApp.PageModels"
+    Title="Maze Runner">
+
+    <Grid RowDefinitions="Auto,*,Auto" Padding="16" BackgroundColor="{StaticResource GameBackground}">
+        <Label
+             Grid.Row="0"
+             Text="{Binding StatusText}"
+             Style="{StaticResource GameTitleLabel}" />
+
+        <!-- Maze Grid -->
+        <CollectionView 
+            Grid.Row="1"
+            ItemsSource="{Binding Cells}"
+            VerticalOptions="Center"
+            HorizontalOptions="Center">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" Span="{Binding Cols}" HorizontalItemSpacing="1" VerticalItemSpacing="1" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="pageModels:MazeCell">
+                     <Grid HeightRequest="40" WidthRequest="40">
+                         <!-- Background (Wall/Path/Goal) -->
+                         <BoxView Color="{Binding Color}" />
+                         
+                         <!-- Player -->
+                         <Image Source="hero_face.png" IsVisible="{Binding IsPlayer}" Aspect="AspectFit" Margin="4"/>
+                         
+                         <!-- Goal Icon Overlay -->
+                         <Image Source="flag.png" IsVisible="{Binding IsGoal}" Aspect="AspectFit" Margin="4"/>
+                     </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- Controls -->
+        <Grid Grid.Row="2" ColumnDefinitions="*,*,*" RowDefinitions="*,*" HeightRequest="150" WidthRequest="200" HorizontalOptions="Center" Margin="0,0,0,20">
+            <Button Grid.Row="0" Grid.Column="1" Text="▲" Command="{Binding MoveUpCommand}" Style="{StaticResource GameButton}" />
+            <Button Grid.Row="1" Grid.Column="0" Text="◄" Command="{Binding MoveLeftCommand}" Style="{StaticResource GameButton}" />
+            <Button Grid.Row="1" Grid.Column="1" Text="▼" Command="{Binding MoveDownCommand}" Style="{StaticResource GameButton}" />
+            <Button Grid.Row="1" Grid.Column="2" Text="►" Command="{Binding MoveRightCommand}" Style="{StaticResource GameButton}" />
+        </Grid>
+    </Grid>
+</ContentPage>
