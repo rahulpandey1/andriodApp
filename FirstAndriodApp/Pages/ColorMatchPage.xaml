@@ -4,26 +4,24 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:models="clr-namespace:FirstAndriodApp.Models"
-    Title="Color Match">
+    Title="🎨 Color Match">
 
-    <Grid RowDefinitions="Auto,Auto,Auto,*" Padding="16" BackgroundColor="{StaticResource GameBackground}">
+    <Grid RowDefinitions="Auto,Auto,Auto,*" Padding="16" Background="{StaticResource GamePageGradient}">
         <Label
             Grid.Row="0"
             Text="{Binding InstructionText}"
-            Style="{StaticResource GameTitleLabel}"
-            TextColor="{StaticResource GamePrimary}" />
+            Style="{StaticResource GameTitleLabel}" />
 
         <Label
             Grid.Row="1"
             Margin="0,8,0,12"
             Text="{Binding StatusText}"
-            FontSize="16"
-            HorizontalTextAlignment="Center" />
+            Style="{StaticResource GameStatusLabel}" />
 
         <Button
             Grid.Row="2"
-            Text="Reset"
-            Style="{StaticResource GameButton}"
+            Text="🔄 Reset"
+            Style="{StaticResource GameResetButton}"
             HorizontalOptions="Center"
             Clicked="Reset_Clicked" />
 
@@ -33,18 +31,18 @@
             SelectionMode="None"
             Margin="0,20,0,0">
             <CollectionView.ItemsLayout>
-                <GridItemsLayout Orientation="Vertical" Span="3" HorizontalItemSpacing="15" VerticalItemSpacing="15" />
+                <GridItemsLayout Orientation="Vertical" Span="3" HorizontalItemSpacing="12" VerticalItemSpacing="12" />
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:MatchItem">
                     <Border
-                        StrokeShape="RoundRectangle 40"
+                        StrokeShape="RoundRectangle 24"
                         StrokeThickness="0"
                         BackgroundColor="White"
                         HeightRequest="100"
                         WidthRequest="100">
                         <Border.Shadow>
-                            <Shadow Brush="Black" Offset="2,2" Opacity="0.1" />
+                            <Shadow Brush="#20000000" Offset="0,4" Opacity="0.15" Radius="10" />
                         </Border.Shadow>
                         <Border.GestureRecognizers>
                             <TapGestureRecognizer 
@@ -59,19 +57,15 @@
                                 Aspect="AspectFit"
                                 Margin="15"
                                 Opacity="{Binding IsMatched, Converter={StaticResource InvertedBoolConverter}, ConverterParameter=0.3}" /> 
-                                <!-- If IsMatched (tapped and correct), maybe hide or dim? 
-                                     Actually, if correct, we might want to show a checkmark or remove it. 
-                                     Let's dim it if 'IsMatched' means 'Already Found'. 
-                                     But my model might use IsMatched for "Correctly Tapped". -->
                             
                             <!-- Checkmark Overlay -->
-                            <Image 
-                                Source="check_icon.png" 
+                            <Border 
                                 IsVisible="{Binding IsMatched}"
-                                Aspect="AspectFit"
-                                HeightRequest="50"
-                                VerticalOptions="Center"
-                                HorizontalOptions="Center" />
+                                BackgroundColor="#806BCB77" 
+                                StrokeThickness="0"
+                                StrokeShape="RoundRectangle 24">
+                                <Label Text="✅" FontSize="36" HorizontalOptions="Center" VerticalOptions="Center" />
+                            </Border>
                         </Grid>
                     </Border>
                 </DataTemplate>

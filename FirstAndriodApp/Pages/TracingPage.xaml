@@ -4,56 +4,57 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pageModels="clr-namespace:FirstAndriodApp.PageModels"
-    Title="Alphabet Tracing">
+    Title="✏️ Alphabet Tracing">
 
-    <Grid RowDefinitions="Auto,Auto,*,Auto" Padding="16" BackgroundColor="{StaticResource GameBackground}">
+    <Grid RowDefinitions="Auto,Auto,*,Auto" Padding="16" Background="{StaticResource GamePageGradient}">
         <Label
             Grid.Row="0"
-            Text="Trace the Letter!"
+            Text="✏️ Trace the Letter!"
             Style="{StaticResource GameTitleLabel}" />
 
         <Label
             Grid.Row="1"
             Text="{Binding StatusText}"
-            FontSize="16"
-            HorizontalOptions="Center" 
+            Style="{StaticResource GameStatusLabel}"
             Margin="0,0,0,10"/>
 
         <!-- Tracing Area -->
-        <Grid Grid.Row="2" BackgroundColor="White" Margin="20">
-            <!-- Background Letter Template -->
-            <Image 
-                Source="{Binding CurrentLetterImage}" 
-                Aspect="AspectFit" 
-                Opacity="0.3" 
-                HorizontalOptions="Fill" 
-                VerticalOptions="Fill" />
-                
-            <!-- Dotted Guide Overlay (Optional, could be part of image) -->
-            
-            <!-- Drawing Canvas -->
-            <GraphicsView
-                x:Name="DrawingCanvas"
-                StartInteraction="DrawingCanvas_StartInteraction"
-                DragInteraction="DrawingCanvas_DragInteraction"
-                EndInteraction="DrawingCanvas_EndInteraction"
-                InputTransparent="False"
-                HorizontalOptions="Fill"
-                VerticalOptions="Fill" />
-        </Grid>
+        <Border Grid.Row="2" BackgroundColor="White" Margin="20" StrokeThickness="3" Stroke="{StaticResource GameLavender}">
+            <Border.StrokeShape><RoundRectangle CornerRadius="24" /></Border.StrokeShape>
+            <Border.Shadow>
+                <Shadow Brush="#20A66CFF" Offset="0,4" Opacity="0.2" Radius="10" />
+            </Border.Shadow>
+            <Grid>
+                <!-- Background Letter Template -->
+                <Image 
+                    Source="{Binding CurrentLetterImage}" 
+                    Aspect="AspectFit" 
+                    Opacity="0.2" 
+                    HorizontalOptions="Fill" 
+                    VerticalOptions="Fill" />
+                    
+                <!-- Drawing Canvas -->
+                <GraphicsView
+                    x:Name="DrawingCanvas"
+                    StartInteraction="DrawingCanvas_StartInteraction"
+                    DragInteraction="DrawingCanvas_DragInteraction"
+                    EndInteraction="DrawingCanvas_EndInteraction"
+                    InputTransparent="False"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Fill" />
+            </Grid>
+        </Border>
 
-        <HorizontalStackLayout Grid.Row="3" Spacing="20" HorizontalOptions="Center" Margin="0,20">
+        <HorizontalStackLayout Grid.Row="3" Spacing="20" HorizontalOptions="Center" Margin="0,16">
             <Button
-                Text="Reset"
+                Text="🔄 Reset"
                 Clicked="Reset_Clicked"
-                Style="{StaticResource GameButton}"
-                BackgroundColor="#FF6B6B" />
+                Style="{StaticResource GameResetButton}" />
             
             <Button
-                Text="Done"
+                Text="✅ Done"
                 Command="{Binding CompleteLetterCommand}"
-                Style="{StaticResource GameButton}"
-                BackgroundColor="#26de81" />
+                Style="{StaticResource GameDoneButton}" />
         </HorizontalStackLayout>
     </Grid>
 </ContentPage>

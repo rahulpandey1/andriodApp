@@ -1,0 +1,1672 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FirstAndriodApp</name>
+    </assembly>
+    <members>
+        <member name="T:FirstAndriodApp.Data.CategoryRepository">
+            <summary>
+            Repository class for managing categories in the database.
+            </summary>
+        </member>
+        <member name="M:FirstAndriodApp.Data.CategoryRepository.#ctor(Microsoft.Extensions.Logging.ILogger{FirstAndriodApp.Data.CategoryRepository})">
+            <summary>
+            Initializes a new instance of the <see cref="T:FirstAndriodApp.Data.CategoryRepository"/> class.
+            </summary>
+            <param name="logger">The logger instance.</param>
+        </member>
+        <member name="M:FirstAndriodApp.Data.CategoryRepository.Init">
+            <summary>
+            Initializes the database connection and creates the Category table if it does not exist.
+            </summary>
+        </member>
+        <member name="M:FirstAndriodApp.Data.CategoryRepository.ListAsync">
+            <summary>
+            Retrieves a list of all categories from the database.
+            </summary>
+            <returns>A list of <see cref="T:FirstAndriodApp.Models.Category"/> objects.</returns>
+        </member>
+        <member name="M:FirstAndriodApp.Data.CategoryRepository.GetAsync(System.Int32)">
+            <summary>
+            Retrieves a specific category by its ID.
+            </summary>
+            <param name="id">The ID of the category.</param>
+            <returns>A <see cref="T:FirstAndriodApp.Models.Category"/> object if found; otherwise, null.</returns>
+        </member>
+        <member name="M:FirstAndriodApp.Data.CategoryRepository.SaveItemAsync(FirstAndriodApp.Models.Category)">
+            <summary>
+            Saves a category to the database. If the category ID is 0, a new category is created; otherwise, the existing category is updated.
+            </summary>
+            <param name="item">The category to save.</param>
+            <returns>The ID of the saved category.</returns>
+        </member>
+        <member name="M:FirstAndriodApp.Data.CategoryRepository.DeleteItemAsync(FirstAndriodApp.Models.Category)">
+            <summary>
+            Deletes a category from the database.
+            </summary>
+            <param name="item">The category to delete.</param>
+            <returns>The number of rows affected.</returns>
+        </member>
+        <member name="M:FirstAndriodApp.Data.CategoryRepository.DropTableAsync">
+            <summary>
+            Drops the Category table from the database.
+            </summary>
+        </member>
+        <member name="T:FirstAndriodApp.Data.ProjectRepository">
+            <summary>
+            Repository class for managing projects in the database.
+            </summary>
+        </member>
+        <member name="M:FirstAndriodApp.Data.ProjectRepository.#ctor(FirstAndriodApp.Data.TaskRepository,FirstAndriodApp.Data.TagRepository,Microsoft.Extensions.Logging.ILogger{FirstAndriodApp.Data.ProjectRepository})">
+            <summary>
+            Initializes a new instance of the <see cref="T:FirstAndriodApp.Data.ProjectRepository"/> class.
+            </summary>
+            <param name="taskRepository">The task repository instance.</param>
+            <param name="tagRepository">The tag repository instance.</param>
+            <param name="logger">The logger instance.</param>
+        </member>
+        <member name="M:FirstAndriodApp.Data.ProjectRepository.Init">
+            <summary>
+            Initializes the database connection and creates the Project table if it does not exist.
+            </summary>
+        </member>
+        <member name="M:FirstAndriodApp.Data.ProjectRepository.ListAsync">
+            <summary>
+            Retrieves a list of all projects from the database.
+            </summary>
+            <returns>A list of <see cref="T:FirstAndriodApp.Models.Project"/> objects.</returns>
+        </member>
+        <member name="M:FirstAndriodApp.Data.ProjectRepository.GetAsync(System.Int32)">
+            <summary>
+            Retrieves a specific project by its ID.
+            </summary>
+            <param name="id">The ID of the project.</param>
+            <returns>A <see cref="T:FirstAndriodApp.Models.Project"/> object if found; otherwise, null.</returns>
+        </member>
+        <member name="M:FirstAndriodApp.Data.ProjectRepository.SaveItemAsync(FirstAndriodApp.Models.Project)">
+            <summary>
+            Saves a project to the database. If the project ID is 0, a new project is created; otherwise, the existing project is updated.
+            </summary>
+            <param name="item">The project to save.</param>
+            <returns>The ID of the saved project.</returns>
+        </member>
+        <member name="M:FirstAndriodApp.Data.ProjectRepository.DeleteItemAsync(FirstAndriodApp.Models.Project)">
+            <summary>
+            Deletes a project from the database.
+            </summary>
+            <param name="item">The project to delete.</param>
+            <returns>The number of rows affected.</returns>
+        </member>
+        <member name="M:FirstAndriodApp.Data.ProjectRepository.DropTableAsync">
+            <summary>
+            Drops the Project table from the database.
+            </summary>
+        </member>
+        <member name="T:FirstAndriodApp.Data.TagRepository">
+            <summary>
+            Repository class for managing tags in the database.
+            </summary>
+        </member>
+        <member name="M:FirstAndriodApp.Data.TagRepository.#ctor(Microsoft.Extensions.Logging.ILogger{FirstAndriodApp.Data.TagRepository})">
+            <summary>
+            Initializes a new instance of the <see cref="T:FirstAndriodApp.Data.TagRepository"/> class.
+            </summary>
+            <param name="logger">The logger instance.</param>
+        </member>
+        <member name="M:FirstAndriodApp.Data.TagRepository.Init">
+            <summary>
+            Initializes the database connection and creates the Tag and ProjectsTags tables if they do not exist.
+            </summary>
+        </member>
+        <member name="M:FirstAndriodApp.Data.TagRepository.ListAsync">
+            <summary>
+            Retrieves a list of all tags from the database.
+            </summary>
+            <returns>A list of <see cref="T:FirstAndriodApp.Models.Tag"/> objects.</returns>
+        </member>
+        <member name="M:FirstAndriodApp.Data.TagRepository.ListAsync(System.Int32)">
+            <summary>
+            Retrieves a list of tags associated with a specific project.
+            </summary>
+            <param name="projectID">The ID of the project.</param>
+            <returns>A list of <see cref="T:FirstAndriodApp.Models.Tag"/> objects.</returns>
+        </member>
+        <member name="M:FirstAndriodApp.Data.TagRepository.GetAsync(System.Int32)">
+            <summary>
+            Retrieves a specific tag by its ID.
+            </summary>
+            <param name="id">The ID of the tag.</param>
+            <returns>A <see cref="T:FirstAndriodApp.Models.Tag"/> object if found; otherwise, null.</returns>
+        </member>
+        <member name="M:FirstAndriodApp.Data.TagRepository.SaveItemAsync(FirstAndriodApp.Models.Tag)">
+            <summary>
+            Saves a tag to the database. If the tag ID is 0, a new tag is created; otherwise, the existing tag is updated.
+            </summary>
+            <param name="item">The tag to save.</param>
+            <returns>The ID of the saved tag.</returns>
+        </member>
+        <member name="M:FirstAndriodApp.Data.TagRepository.SaveItemAsync(FirstAndriodApp.Models.Tag,System.Int32)">
+            <summary>
+            Saves a tag to the database and associates it with a specific project.
+            </summary>
+            <param name="item">The tag to save.</param>
+            <param name="projectID">The ID of the project.</param>
+            <returns>The number of rows affected.</returns>
+        </member>
+        <member name="M:FirstAndriodApp.Data.TagRepository.IsAssociated(FirstAndriodApp.Models.Tag,System.Int32)">
+            <summary>
+            Checks if a tag is already associated with a specific project.
+            </summary>
+            <param name="item">The tag to save.</param>
+            <param name="projectID">The ID of the project.</param>
+            <returns>If tag is already associated with this project</returns>
+        </member>
+        <member name="M:FirstAndriodApp.Data.TagRepository.DeleteItemAsync(FirstAndriodApp.Models.Tag)">
+            <summary>
+            Deletes a tag from the database.
+            </summary>
+            <param name="item">The tag to delete.</param>
+            <returns>The number of rows affected.</returns>
+        </member>
+        <member name="M:FirstAndriodApp.Data.TagRepository.DeleteItemAsync(FirstAndriodApp.Models.Tag,System.Int32)">
+            <summary>
+            Deletes a tag from a specific project in the database.
+            </summary>
+            <param name="item">The tag to delete.</param>
+            <param name="projectID">The ID of the project.</param>
+            <returns>The number of rows affected.</returns>
+        </member>
+        <member name="M:FirstAndriodApp.Data.TagRepository.DropTableAsync">
+            <summary>
+            Drops the Tag and ProjectsTags tables from the database.
+            </summary>
+        </member>
+        <member name="T:FirstAndriodApp.Data.TaskRepository">
+            <summary>
+            Repository class for managing tasks in the database.
+            </summary>
+        </member>
+        <member name="M:FirstAndriodApp.Data.TaskRepository.#ctor(Microsoft.Extensions.Logging.ILogger{FirstAndriodApp.Data.TaskRepository})">
+            <summary>
+            Initializes a new instance of the <see cref="T:FirstAndriodApp.Data.TaskRepository"/> class.
+            </summary>
+            <param name="logger">The logger instance.</param>
+        </member>
+        <member name="M:FirstAndriodApp.Data.TaskRepository.Init">
+            <summary>
+            Initializes the database connection and creates the Task table if it does not exist.
+            </summary>
+        </member>
+        <member name="M:FirstAndriodApp.Data.TaskRepository.ListAsync">
+            <summary>
+            Retrieves a list of all tasks from the database.
+            </summary>
+            <returns>A list of <see cref="T:FirstAndriodApp.Models.ProjectTask"/> objects.</returns>
+        </member>
+        <member name="M:FirstAndriodApp.Data.TaskRepository.ListAsync(System.Int32)">
+            <summary>
+            Retrieves a list of tasks associated with a specific project.
+            </summary>
+            <param name="projectId">The ID of the project.</param>
+            <returns>A list of <see cref="T:FirstAndriodApp.Models.ProjectTask"/> objects.</returns>
+        </member>
+        <member name="M:FirstAndriodApp.Data.TaskRepository.GetAsync(System.Int32)">
+            <summary>
+            Retrieves a specific task by its ID.
+            </summary>
+            <param name="id">The ID of the task.</param>
+            <returns>A <see cref="T:FirstAndriodApp.Models.ProjectTask"/> object if found; otherwise, null.</returns>
+        </member>
+        <member name="M:FirstAndriodApp.Data.TaskRepository.SaveItemAsync(FirstAndriodApp.Models.ProjectTask)">
+            <summary>
+            Saves a task to the database. If the task ID is 0, a new task is created; otherwise, the existing task is updated.
+            </summary>
+            <param name="item">The task to save.</param>
+            <returns>The ID of the saved task.</returns>
+        </member>
+        <member name="M:FirstAndriodApp.Data.TaskRepository.DeleteItemAsync(FirstAndriodApp.Models.ProjectTask)">
+            <summary>
+            Deletes a task from the database.
+            </summary>
+            <param name="item">The task to delete.</param>
+            <returns>The number of rows affected.</returns>
+        </member>
+        <member name="M:FirstAndriodApp.Data.TaskRepository.DropTableAsync">
+            <summary>
+            Drops the Task table from the database.
+            </summary>
+        </member>
+        <member name="T:FirstAndriodApp.Models.MatchItem">
+            <inheritdoc/>
+        </member>
+        <member name="P:FirstAndriodApp.Models.MatchItem.IsMatched">
+            <inheritdoc cref="F:FirstAndriodApp.Models.MatchItem._isMatched"/>
+        </member>
+        <member name="T:FirstAndriodApp.PageModels.AnimalMatchPageModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.AnimalMatchPageModel.Animals">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.AnimalMatchPageModel._animals"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.AnimalMatchPageModel.StatusText">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.AnimalMatchPageModel._statusText"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.AnimalMatchPageModel.IsPlayingSound">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.AnimalMatchPageModel._isPlayingSound"/>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.AnimalMatchPageModel.playTargetSoundCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.AnimalMatchPageModel.PlayTargetSoundCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.AnimalMatchPageModel.PlayTargetSoundCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.AnimalMatchPageModel.PlayTargetSound"/>.</summary>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.AnimalMatchPageModel.checkAnswerCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.AnimalMatchPageModel.CheckAnswerCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.AnimalMatchPageModel.CheckAnswerCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.AnimalMatchPageModel.CheckAnswer(FirstAndriodApp.Models.MatchItem)"/>.</summary>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.AnimalMatchPageModel.resetCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.AnimalMatchPageModel.ResetCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.AnimalMatchPageModel.ResetCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.AnimalMatchPageModel.Reset"/>.</summary>
+        </member>
+        <member name="T:FirstAndriodApp.PageModels.BalloonPopPageModel">
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.BalloonPopPageModel.StatusText">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.BalloonPopPageModel._statusText"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.BalloonPopPageModel.Balloons">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.BalloonPopPageModel._balloons"/>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.BalloonPopPageModel.popBalloonCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.BalloonPopPageModel.PopBalloonCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.BalloonPopPageModel.PopBalloonCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.BalloonPopPageModel.PopBalloon(FirstAndriodApp.PageModels.BalloonItem)"/>.</summary>
+        </member>
+        <member name="T:FirstAndriodApp.PageModels.BalloonItem">
+            <inheritdoc/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.BalloonItem.X">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.BalloonItem._x"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.BalloonItem.Y">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.BalloonItem._y"/>
+        </member>
+        <member name="T:FirstAndriodApp.PageModels.ColorMatchPageModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ColorMatchPageModel.Items">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.ColorMatchPageModel._items"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ColorMatchPageModel.InstructionText">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.ColorMatchPageModel._instructionText"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ColorMatchPageModel.StatusText">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.ColorMatchPageModel._statusText"/>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.ColorMatchPageModel.resetCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.ColorMatchPageModel.ResetCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ColorMatchPageModel.ResetCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.ColorMatchPageModel.Reset"/>.</summary>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.ColorMatchPageModel.tapItemCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.ColorMatchPageModel.TapItemCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ColorMatchPageModel.TapItemCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.ColorMatchPageModel.TapItem(FirstAndriodApp.Models.MatchItem)"/>.</summary>
+        </member>
+        <member name="T:FirstAndriodApp.PageModels.ColorMixingPageModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ColorMixingPageModel.StatusText">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.ColorMixingPageModel._statusText"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ColorMixingPageModel.TargetColor">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.ColorMixingPageModel._targetColor"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ColorMixingPageModel.MixedColor">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.ColorMixingPageModel._mixedColor"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ColorMixingPageModel.Color1">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.ColorMixingPageModel._color1"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ColorMixingPageModel.Color2">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.ColorMixingPageModel._color2"/>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.ColorMixingPageModel.selectColorCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.ColorMixingPageModel.SelectColorCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ColorMixingPageModel.SelectColorCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.ColorMixingPageModel.SelectColor(FirstAndriodApp.PageModels.ColorItem)"/>.</summary>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.ColorMixingPageModel.resetCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.ColorMixingPageModel.ResetCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ColorMixingPageModel.ResetCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.ColorMixingPageModel.Reset"/>.</summary>
+        </member>
+        <member name="T:FirstAndriodApp.PageModels.ConnectDotsPageModel">
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ConnectDotsPageModel.Dots">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.ConnectDotsPageModel._dots"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ConnectDotsPageModel.StatusText">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.ConnectDotsPageModel._statusText"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ConnectDotsPageModel.IsCompleted">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.ConnectDotsPageModel._isCompleted"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ConnectDotsPageModel.RevealedImage">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.ConnectDotsPageModel._revealedImage"/>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.ConnectDotsPageModel.resetCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.ConnectDotsPageModel.ResetCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ConnectDotsPageModel.ResetCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.ConnectDotsPageModel.Reset"/>.</summary>
+        </member>
+        <member name="T:FirstAndriodApp.PageModels.DotItem">
+            <inheritdoc/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.DotItem.IsConnected">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.DotItem._isConnected"/>
+        </member>
+        <member name="T:FirstAndriodApp.PageModels.FruitCatchPageModel">
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.FruitCatchPageModel.StatusText">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.FruitCatchPageModel._statusText"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.FruitCatchPageModel.BasketX">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.FruitCatchPageModel._basketX"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.FruitCatchPageModel.Score">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.FruitCatchPageModel._score"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.FruitCatchPageModel.BasketY">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.FruitCatchPageModel._basketY"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.FruitCatchPageModel.Items">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.FruitCatchPageModel._items"/>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.FruitCatchPageModel.moveBasketCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.FruitCatchPageModel.MoveBasketCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.FruitCatchPageModel.MoveBasketCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.FruitCatchPageModel.MoveBasket(System.Double)"/>.</summary>
+        </member>
+        <member name="T:FirstAndriodApp.PageModels.FallingItem">
+            <inheritdoc/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.FallingItem.X">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.FallingItem._x"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.FallingItem.Y">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.FallingItem._y"/>
+        </member>
+        <member name="T:FirstAndriodApp.PageModels.GamesViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.GamesViewModel.Games">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.GamesViewModel._games"/>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.GamesViewModel.openGameCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.GamesViewModel.OpenGameCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.GamesViewModel.OpenGameCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.GamesViewModel.OpenGame(FirstAndriodApp.Models.GameTile)"/>.</summary>
+        </member>
+        <member name="T:FirstAndriodApp.PageModels.JigsawPageModel">
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.JigsawPageModel.Pieces">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.JigsawPageModel._pieces"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.JigsawPageModel.BoardSize">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.JigsawPageModel._boardSize"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.JigsawPageModel.StatusText">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.JigsawPageModel._statusText"/>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.JigsawPageModel.resetCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.JigsawPageModel.ResetCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.JigsawPageModel.ResetCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.JigsawPageModel.Reset"/>.</summary>
+        </member>
+        <member name="T:FirstAndriodApp.PageModels.JigsawPiece">
+            <inheritdoc/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.JigsawPiece.CurrentX">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.JigsawPiece._currentX"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.JigsawPiece.CurrentY">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.JigsawPiece._currentY"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.JigsawPiece.IsLocked">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.JigsawPiece._isLocked"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.JigsawPiece.ZIndex">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.JigsawPiece._zIndex"/>
+        </member>
+        <member name="T:FirstAndriodApp.PageModels.MainPageModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.MainPageModel.TodoCategoryData">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.MainPageModel._todoCategoryData"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.MainPageModel.TodoCategoryColors">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.MainPageModel._todoCategoryColors"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.MainPageModel.Tasks">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.MainPageModel._tasks"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.MainPageModel.Projects">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.MainPageModel._projects"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.MainPageModel.IsBusy">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.MainPageModel._isBusy"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.MainPageModel.IsRefreshing">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.MainPageModel._isRefreshing"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.MainPageModel.Today">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.MainPageModel._today"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.MainPageModel.SelectedProject">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.MainPageModel.selectedProject"/>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.MainPageModel.refreshCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.MainPageModel.RefreshCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.MainPageModel.RefreshCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.MainPageModel.Refresh"/>.</summary>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.MainPageModel.navigatedToCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.MainPageModel.NavigatedToCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.MainPageModel.NavigatedToCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.MainPageModel.NavigatedTo"/>.</summary>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.MainPageModel.navigatedFromCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.MainPageModel.NavigatedFromCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.MainPageModel.NavigatedFromCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.MainPageModel.NavigatedFrom"/>.</summary>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.MainPageModel.appearingCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.MainPageModel.AppearingCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.MainPageModel.AppearingCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.MainPageModel.Appearing"/>.</summary>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.MainPageModel.taskCompletedCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.MainPageModel.TaskCompletedCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.MainPageModel.TaskCompletedCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.MainPageModel.TaskCompleted(FirstAndriodApp.Models.ProjectTask)"/>.</summary>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.MainPageModel.addTaskCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.MainPageModel.AddTaskCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.MainPageModel.AddTaskCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.MainPageModel.AddTask"/>.</summary>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.MainPageModel.navigateToProjectCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.MainPageModel.NavigateToProjectCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.MainPageModel.NavigateToProjectCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.MainPageModel.NavigateToProject(FirstAndriodApp.Models.Project)"/>.</summary>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.MainPageModel.navigateToTaskCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.MainPageModel.NavigateToTaskCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.MainPageModel.NavigateToTaskCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.MainPageModel.NavigateToTask(FirstAndriodApp.Models.ProjectTask)"/>.</summary>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.MainPageModel.cleanTasksCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.MainPageModel.CleanTasksCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.MainPageModel.CleanTasksCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.MainPageModel.CleanTasks"/>.</summary>
+        </member>
+        <member name="T:FirstAndriodApp.PageModels.ManageMetaPageModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ManageMetaPageModel.Categories">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.ManageMetaPageModel._categories"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ManageMetaPageModel.Tags">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.ManageMetaPageModel._tags"/>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.ManageMetaPageModel.appearingCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.ManageMetaPageModel.AppearingCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ManageMetaPageModel.AppearingCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.ManageMetaPageModel.Appearing"/>.</summary>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.ManageMetaPageModel.saveCategoriesCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.ManageMetaPageModel.SaveCategoriesCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ManageMetaPageModel.SaveCategoriesCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.ManageMetaPageModel.SaveCategories"/>.</summary>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.ManageMetaPageModel.deleteCategoryCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.ManageMetaPageModel.DeleteCategoryCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ManageMetaPageModel.DeleteCategoryCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.ManageMetaPageModel.DeleteCategory(FirstAndriodApp.Models.Category)"/>.</summary>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.ManageMetaPageModel.addCategoryCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.ManageMetaPageModel.AddCategoryCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ManageMetaPageModel.AddCategoryCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.ManageMetaPageModel.AddCategory"/>.</summary>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.ManageMetaPageModel.saveTagsCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.ManageMetaPageModel.SaveTagsCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ManageMetaPageModel.SaveTagsCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.ManageMetaPageModel.SaveTags"/>.</summary>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.ManageMetaPageModel.deleteTagCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.ManageMetaPageModel.DeleteTagCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ManageMetaPageModel.DeleteTagCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.ManageMetaPageModel.DeleteTag(FirstAndriodApp.Models.Tag)"/>.</summary>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.ManageMetaPageModel.addTagCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.ManageMetaPageModel.AddTagCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ManageMetaPageModel.AddTagCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.ManageMetaPageModel.AddTag"/>.</summary>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.ManageMetaPageModel.resetCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.ManageMetaPageModel.ResetCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ManageMetaPageModel.ResetCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.ManageMetaPageModel.Reset"/>.</summary>
+        </member>
+        <member name="T:FirstAndriodApp.PageModels.MatchItPageModel">
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.MatchItPageModel.LeftItems">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.MatchItPageModel._leftItems"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.MatchItPageModel.RightItems">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.MatchItPageModel._rightItems"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.MatchItPageModel.StatusText">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.MatchItPageModel._statusText"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.MatchItPageModel.MatchedCount">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.MatchItPageModel._matchedCount"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.MatchItPageModel.IsCompleted">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.MatchItPageModel._isCompleted"/>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.MatchItPageModel.resetCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.MatchItPageModel.ResetCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.MatchItPageModel.ResetCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.MatchItPageModel.Reset"/>.</summary>
+        </member>
+        <member name="T:FirstAndriodApp.PageModels.MazePageModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.MazePageModel.StatusText">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.MazePageModel._statusText"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.MazePageModel.Cells">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.MazePageModel._cells"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.MazePageModel.Rows">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.MazePageModel._rows"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.MazePageModel.Cols">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.MazePageModel._cols"/>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.MazePageModel.resetCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.MazePageModel.ResetCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.MazePageModel.ResetCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.MazePageModel.Reset"/>.</summary>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.MazePageModel.moveUpCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.MazePageModel.MoveUpCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.MazePageModel.MoveUpCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.MazePageModel.MoveUp"/>.</summary>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.MazePageModel.moveDownCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.MazePageModel.MoveDownCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.MazePageModel.MoveDownCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.MazePageModel.MoveDown"/>.</summary>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.MazePageModel.moveLeftCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.MazePageModel.MoveLeftCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.MazePageModel.MoveLeftCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.MazePageModel.MoveLeft"/>.</summary>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.MazePageModel.moveRightCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.MazePageModel.MoveRightCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.MazePageModel.MoveRightCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.MazePageModel.MoveRight"/>.</summary>
+        </member>
+        <member name="T:FirstAndriodApp.PageModels.MazeCell">
+            <inheritdoc/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.MazeCell.IsPlayer">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.MazeCell._isPlayer"/>
+        </member>
+        <member name="T:FirstAndriodApp.PageModels.MemoryFlipPageModel">
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.MemoryFlipPageModel.Cards">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.MemoryFlipPageModel._cards"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.MemoryFlipPageModel.StatusText">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.MemoryFlipPageModel._statusText"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.MemoryFlipPageModel.Moves">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.MemoryFlipPageModel._moves"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.MemoryFlipPageModel.MatchedPairs">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.MemoryFlipPageModel._matchedPairs"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.MemoryFlipPageModel.IsCompleted">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.MemoryFlipPageModel._isCompleted"/>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.MemoryFlipPageModel.resetCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.MemoryFlipPageModel.ResetCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.MemoryFlipPageModel.ResetCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.MemoryFlipPageModel.Reset"/>.</summary>
+        </member>
+        <member name="T:FirstAndriodApp.PageModels.ProjectDetailPageModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ProjectDetailPageModel.Name">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.ProjectDetailPageModel._name"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ProjectDetailPageModel.Description">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.ProjectDetailPageModel._description"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ProjectDetailPageModel.Tasks">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.ProjectDetailPageModel._tasks"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ProjectDetailPageModel.Categories">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.ProjectDetailPageModel._categories"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ProjectDetailPageModel.Category">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.ProjectDetailPageModel._category"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ProjectDetailPageModel.CategoryIndex">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.ProjectDetailPageModel._categoryIndex"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ProjectDetailPageModel.AllTags">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.ProjectDetailPageModel._allTags"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ProjectDetailPageModel.Icon">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.ProjectDetailPageModel._icon"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ProjectDetailPageModel.IsBusy">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.ProjectDetailPageModel._isBusy"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ProjectDetailPageModel.Icons">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.ProjectDetailPageModel._icons"/>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.ProjectDetailPageModel.taskCompletedCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.ProjectDetailPageModel.TaskCompletedCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ProjectDetailPageModel.TaskCompletedCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.ProjectDetailPageModel.TaskCompleted(FirstAndriodApp.Models.ProjectTask)"/>.</summary>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.ProjectDetailPageModel.saveCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.ProjectDetailPageModel.SaveCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ProjectDetailPageModel.SaveCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.ProjectDetailPageModel.Save"/>.</summary>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.ProjectDetailPageModel.addTaskCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.ProjectDetailPageModel.AddTaskCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ProjectDetailPageModel.AddTaskCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.ProjectDetailPageModel.AddTask"/>.</summary>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.ProjectDetailPageModel.deleteCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.ProjectDetailPageModel.DeleteCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ProjectDetailPageModel.DeleteCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.ProjectDetailPageModel.Delete"/>.</summary>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.ProjectDetailPageModel.navigateToTaskCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.ProjectDetailPageModel.NavigateToTaskCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ProjectDetailPageModel.NavigateToTaskCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.ProjectDetailPageModel.NavigateToTask(FirstAndriodApp.Models.ProjectTask)"/>.</summary>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.ProjectDetailPageModel.toggleTagCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.ProjectDetailPageModel.ToggleTagCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ProjectDetailPageModel.ToggleTagCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.ProjectDetailPageModel.ToggleTag(FirstAndriodApp.Models.Tag)"/>.</summary>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.ProjectDetailPageModel.iconSelectedCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.ProjectDetailPageModel.IconSelectedCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ProjectDetailPageModel.IconSelectedCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.ProjectDetailPageModel.IconSelected(FirstAndriodApp.Models.IconData)"/>.</summary>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.ProjectDetailPageModel.cleanTasksCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.ProjectDetailPageModel.CleanTasksCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ProjectDetailPageModel.CleanTasksCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.ProjectDetailPageModel.CleanTasks"/>.</summary>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.ProjectDetailPageModel.selectionChangedCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.ProjectDetailPageModel.SelectionChangedCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ProjectDetailPageModel.SelectionChangedCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.ProjectDetailPageModel.SelectionChanged(System.Object)"/>.</summary>
+        </member>
+        <member name="T:FirstAndriodApp.PageModels.ProjectListPageModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ProjectListPageModel.Projects">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.ProjectListPageModel._projects"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ProjectListPageModel.SelectedProject">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.ProjectListPageModel.selectedProject"/>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.ProjectListPageModel.appearingCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.ProjectListPageModel.AppearingCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ProjectListPageModel.AppearingCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.ProjectListPageModel.Appearing"/>.</summary>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.ProjectListPageModel.navigateToProjectCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.ProjectListPageModel.NavigateToProjectCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ProjectListPageModel.NavigateToProjectCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.ProjectListPageModel.NavigateToProject(FirstAndriodApp.Models.Project)"/>.</summary>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.ProjectListPageModel.addProjectCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.ProjectListPageModel.AddProjectCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ProjectListPageModel.AddProjectCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.ProjectListPageModel.AddProject"/>.</summary>
+        </member>
+        <member name="T:FirstAndriodApp.PageModels.PuzzleSliderPageModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.PuzzleSliderPageModel.Tiles">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.PuzzleSliderPageModel._tiles"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.PuzzleSliderPageModel.StatusText">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.PuzzleSliderPageModel._statusText"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.PuzzleSliderPageModel.Moves">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.PuzzleSliderPageModel._moves"/>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.PuzzleSliderPageModel.tileTapCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.PuzzleSliderPageModel.TileTapCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.PuzzleSliderPageModel.TileTapCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.PuzzleSliderPageModel.TileTap(FirstAndriodApp.PageModels.PuzzleTile)"/>.</summary>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.PuzzleSliderPageModel.resetCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.PuzzleSliderPageModel.ResetCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.PuzzleSliderPageModel.ResetCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.PuzzleSliderPageModel.Reset"/>.</summary>
+        </member>
+        <member name="T:FirstAndriodApp.PageModels.ShadowMatchPageModel">
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ShadowMatchPageModel.LeftItems">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.ShadowMatchPageModel._leftItems"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ShadowMatchPageModel.RightItems">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.ShadowMatchPageModel._rightItems"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ShadowMatchPageModel.StatusText">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.ShadowMatchPageModel._statusText"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ShadowMatchPageModel.MatchedCount">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.ShadowMatchPageModel._matchedCount"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ShadowMatchPageModel.IsCompleted">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.ShadowMatchPageModel._isCompleted"/>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.ShadowMatchPageModel.resetCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.ShadowMatchPageModel.ResetCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ShadowMatchPageModel.ResetCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.ShadowMatchPageModel.Reset"/>.</summary>
+        </member>
+        <member name="T:FirstAndriodApp.PageModels.ShapeSorterPageModel">
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ShapeSorterPageModel.Shapes">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.ShapeSorterPageModel._shapes"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ShapeSorterPageModel.StatusText">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.ShapeSorterPageModel._statusText"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ShapeSorterPageModel.SortedCount">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.ShapeSorterPageModel._sortedCount"/>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.ShapeSorterPageModel.resetCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.ShapeSorterPageModel.ResetCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.ShapeSorterPageModel.ResetCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.ShapeSorterPageModel.Reset"/>.</summary>
+        </member>
+        <member name="T:FirstAndriodApp.PageModels.SpotDifferencePageModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.SpotDifferencePageModel.StatusText">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.SpotDifferencePageModel._statusText"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.SpotDifferencePageModel.BaseImage">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.SpotDifferencePageModel._baseImage"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.SpotDifferencePageModel.Differences">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.SpotDifferencePageModel._differences"/>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.SpotDifferencePageModel.differenceTappedCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.SpotDifferencePageModel.DifferenceTappedCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.SpotDifferencePageModel.DifferenceTappedCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.SpotDifferencePageModel.DifferenceTapped(FirstAndriodApp.PageModels.DifferenceItem)"/>.</summary>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.SpotDifferencePageModel.resetCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.SpotDifferencePageModel.ResetCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.SpotDifferencePageModel.ResetCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.SpotDifferencePageModel.Reset"/>.</summary>
+        </member>
+        <member name="T:FirstAndriodApp.PageModels.DifferenceItem">
+            <inheritdoc/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.DifferenceItem.IsFound">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.DifferenceItem._isFound"/>
+        </member>
+        <member name="T:FirstAndriodApp.PageModels.TaskDetailPageModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.TaskDetailPageModel.Title">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.TaskDetailPageModel._title"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.TaskDetailPageModel.IsCompleted">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.TaskDetailPageModel._isCompleted"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.TaskDetailPageModel.Projects">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.TaskDetailPageModel._projects"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.TaskDetailPageModel.Project">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.TaskDetailPageModel._project"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.TaskDetailPageModel.SelectedProjectIndex">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.TaskDetailPageModel._selectedProjectIndex"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.TaskDetailPageModel.IsExistingProject">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.TaskDetailPageModel._isExistingProject"/>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.TaskDetailPageModel.saveCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.TaskDetailPageModel.SaveCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.TaskDetailPageModel.SaveCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.TaskDetailPageModel.Save"/>.</summary>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.TaskDetailPageModel.deleteCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.TaskDetailPageModel.DeleteCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.TaskDetailPageModel.DeleteCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.TaskDetailPageModel.Delete"/>.</summary>
+        </member>
+        <member name="T:FirstAndriodApp.PageModels.TracingPageModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.TracingPageModel.CurrentLetterImage">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.TracingPageModel._currentLetterImage"/>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.TracingPageModel.StatusText">
+            <inheritdoc cref="F:FirstAndriodApp.PageModels.TracingPageModel._statusText"/>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.TracingPageModel.completeLetterCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.TracingPageModel.CompleteLetterCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.TracingPageModel.CompleteLetterCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.TracingPageModel.CompleteLetter"/>.</summary>
+        </member>
+        <member name="F:FirstAndriodApp.PageModels.TracingPageModel.resetCommand">
+            <summary>The backing field for <see cref="P:FirstAndriodApp.PageModels.TracingPageModel.ResetCommand"/>.</summary>
+        </member>
+        <member name="P:FirstAndriodApp.PageModels.TracingPageModel.ResetCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:FirstAndriodApp.PageModels.TracingPageModel.Reset"/>.</summary>
+        </member>
+        <member name="T:FirstAndriodApp.Services.IErrorHandler">
+            <summary>
+            Error Handler Service.
+            </summary>
+        </member>
+        <member name="M:FirstAndriodApp.Services.IErrorHandler.HandleError(System.Exception)">
+            <summary>
+            Handle error in UI.
+            </summary>
+            <param name="ex">Exception being thrown.</param>
+        </member>
+        <member name="T:FirstAndriodApp.Services.ModalErrorHandler">
+            <summary>
+            Modal Error Handler.
+            </summary>
+        </member>
+        <member name="M:FirstAndriodApp.Services.ModalErrorHandler.HandleError(System.Exception)">
+            <summary>
+            Handle error in UI.
+            </summary>
+            <param name="ex">Exception.</param>
+        </member>
+        <member name="T:FirstAndriodApp.Utilities.ProjectExtensions">
+            <summary>
+            Project Model Extensions
+            </summary>
+        </member>
+        <member name="M:FirstAndriodApp.Utilities.ProjectExtensions.IsNullOrNew(FirstAndriodApp.Models.Project)">
+            <summary>
+            Check if the project is null or new.
+            </summary>
+            <param name="project"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FirstAndriodApp.Utilities.TaskUtilities">
+            <summary>
+            Task Utilities.
+            </summary>
+        </member>
+        <member name="M:FirstAndriodApp.Utilities.TaskUtilities.FireAndForgetSafeAsync(System.Threading.Tasks.Task,FirstAndriodApp.Services.IErrorHandler)">
+            <summary>
+            Fire and Forget Safe Async.
+            </summary>
+            <param name="task">Task to Fire and Forget.</param>
+            <param name="handler">Error Handler.</param>
+        </member>
+        <member name="T:FirstAndriodApp.Resource">
+            <summary>
+            Android Resource Designer class.
+            Exposes the Android Resource designer assembly into the project Namespace.
+            </summary>
+        </member>
+        <member name="P:JsonContext.Boolean">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:JsonContext.Category">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:JsonContext.Project">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:JsonContext.ProjectsJson">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:JsonContext.ProjectTask">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:JsonContext.Tag">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:JsonContext.ListProject">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:JsonContext.ListProjectTask">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:JsonContext.ListTag">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:JsonContext.Int32">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:JsonContext.String">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:JsonContext.Default">
+            <summary>
+            The default <see cref="T:System.Text.Json.Serialization.JsonSerializerContext"/> associated with a default <see cref="T:System.Text.Json.JsonSerializerOptions"/> instance.
+            </summary>
+        </member>
+        <member name="P:JsonContext.GeneratedSerializerOptions">
+            <summary>
+            The source-generated options associated with this context.
+            </summary>
+        </member>
+        <member name="M:JsonContext.#ctor">
+            <inheritdoc/>
+        </member>
+        <member name="M:JsonContext.#ctor(System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="M:JsonContext.GetTypeInfo(System.Type)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_Button.TextColorTo(Microsoft.Maui.Controls.Button,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <param name = "token"><see cref = "T:System.Threading.CancellationToken"/></param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_DatePicker.TextColorTo(Microsoft.Maui.Controls.DatePicker,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <param name = "token"><see cref = "T:System.Threading.CancellationToken"/></param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_Editor.TextColorTo(Microsoft.Maui.Controls.Editor,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <param name = "token"><see cref = "T:System.Threading.CancellationToken"/></param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_Entry.TextColorTo(Microsoft.Maui.Controls.Entry,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <param name = "token"><see cref = "T:System.Threading.CancellationToken"/></param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_InputView.TextColorTo(Microsoft.Maui.Controls.InputView,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <param name = "token"><see cref = "T:System.Threading.CancellationToken"/></param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_Label.TextColorTo(Microsoft.Maui.Controls.Label,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <param name = "token"><see cref = "T:System.Threading.CancellationToken"/></param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_Picker.TextColorTo(Microsoft.Maui.Controls.Picker,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <param name = "token"><see cref = "T:System.Threading.CancellationToken"/></param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_RadioButton.TextColorTo(Microsoft.Maui.Controls.RadioButton,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <param name = "token"><see cref = "T:System.Threading.CancellationToken"/></param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_SearchBar.TextColorTo(Microsoft.Maui.Controls.SearchBar,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <param name = "token"><see cref = "T:System.Threading.CancellationToken"/></param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_TimePicker.TextColorTo(Microsoft.Maui.Controls.TimePicker,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <param name = "token"><see cref = "T:System.Threading.CancellationToken"/></param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs">
+            <summary>
+            A helper type providing cached, reusable <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instances
+            for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsMatched">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsMatched" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Animals">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Animals" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.StatusText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "StatusText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsPlayingSound">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsPlayingSound" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Balloons">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Balloons" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.X">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "X" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Y">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Y" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Items">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Items" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.InstructionText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "InstructionText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.TargetColor">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "TargetColor" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.MixedColor">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "MixedColor" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Color1">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Color1" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Color2">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Color2" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Dots">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Dots" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsCompleted">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsCompleted" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.RevealedImage">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "RevealedImage" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsConnected">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsConnected" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.BasketX">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "BasketX" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Score">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Score" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.BasketY">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "BasketY" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Games">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Games" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Pieces">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Pieces" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.BoardSize">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "BoardSize" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CurrentX">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CurrentX" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CurrentY">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CurrentY" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsLocked">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsLocked" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ZIndex">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ZIndex" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.TodoCategoryData">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "TodoCategoryData" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.TodoCategoryColors">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "TodoCategoryColors" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Tasks">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Tasks" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Projects">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Projects" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsBusy">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsBusy" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsRefreshing">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsRefreshing" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Today">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Today" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SelectedProject">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SelectedProject" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Categories">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Categories" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Tags">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Tags" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.LeftItems">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "LeftItems" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.RightItems">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "RightItems" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.MatchedCount">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "MatchedCount" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Cells">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Cells" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Rows">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Rows" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Cols">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Cols" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsPlayer">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsPlayer" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Cards">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Cards" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Moves">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Moves" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.MatchedPairs">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "MatchedPairs" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Name">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Name" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Description">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Description" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Category">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Category" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CategoryIndex">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CategoryIndex" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.AllTags">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "AllTags" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Icon">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Icon" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Icons">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Icons" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Tiles">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Tiles" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Shapes">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Shapes" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SortedCount">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SortedCount" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.BaseImage">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "BaseImage" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Differences">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Differences" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsFound">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsFound" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Opacity">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Opacity" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Title">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Title" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Project">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Project" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SelectedProjectIndex">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SelectedProjectIndex" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsExistingProject">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsExistingProject" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CurrentLetterImage">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CurrentLetterImage" generated properties.</summary>
+        </member>
+        <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs">
+            <summary>
+            A helper type providing cached, reusable <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instances
+            for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsMatched">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsMatched" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Animals">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Animals" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.StatusText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "StatusText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsPlayingSound">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsPlayingSound" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Balloons">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Balloons" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.X">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "X" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Y">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Y" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Items">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Items" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.InstructionText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "InstructionText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.TargetColor">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "TargetColor" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.MixedColor">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "MixedColor" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Color1">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Color1" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Color2">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Color2" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Dots">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Dots" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsCompleted">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsCompleted" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.RevealedImage">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "RevealedImage" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsConnected">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsConnected" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.BasketX">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "BasketX" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Score">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Score" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.BasketY">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "BasketY" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Games">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Games" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Pieces">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Pieces" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.BoardSize">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "BoardSize" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CurrentX">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CurrentX" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CurrentY">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CurrentY" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsLocked">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsLocked" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ZIndex">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ZIndex" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.TodoCategoryData">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "TodoCategoryData" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.TodoCategoryColors">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "TodoCategoryColors" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Tasks">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Tasks" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Projects">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Projects" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsBusy">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsBusy" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsRefreshing">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsRefreshing" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Today">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Today" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SelectedProject">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SelectedProject" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Categories">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Categories" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Tags">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Tags" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.LeftItems">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "LeftItems" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.RightItems">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "RightItems" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.MatchedCount">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "MatchedCount" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Cells">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Cells" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Rows">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Rows" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Cols">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Cols" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsPlayer">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsPlayer" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Cards">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Cards" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Moves">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Moves" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.MatchedPairs">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "MatchedPairs" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Name">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Name" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Description">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Description" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Category">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Category" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CategoryIndex">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CategoryIndex" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.AllTags">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "AllTags" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Icon">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Icon" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Icons">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Icons" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Tiles">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Tiles" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Shapes">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Shapes" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SortedCount">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SortedCount" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.BaseImage">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "BaseImage" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Differences">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Differences" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsFound">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsFound" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Opacity">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Opacity" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Title">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Title" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Project">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Project" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SelectedProjectIndex">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SelectedProjectIndex" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsExistingProject">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsExistingProject" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CurrentLetterImage">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CurrentLetterImage" generated properties.</summary>
+        </member>
+    </members>
+</doc>

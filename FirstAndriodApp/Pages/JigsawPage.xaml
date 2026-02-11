@@ -4,75 +4,72 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pageModels="clr-namespace:FirstAndriodApp.PageModels"
-    Title="Jigsaw Puzzle">
+    Title="🧩 Jigsaw Puzzle">
 
-    <Grid RowDefinitions="Auto,Auto,*" Padding="16" BackgroundColor="{StaticResource GameBackground}">
+    <Grid RowDefinitions="Auto,Auto,*" Padding="16" Background="{StaticResource GamePageGradient}">
         <Label
             Grid.Row="0"
-            Text="Complete the Picture!"
+            Text="🧩 Complete the Picture!"
             Style="{StaticResource GameTitleLabel}" />
 
-        <Label
-            Grid.Row="1"
-            Text="{Binding StatusText}"
-            FontSize="16"
-            HorizontalOptions="Center" 
-            Margin="0,0,0,10"/>
-
-        <Button
-            Grid.Row="1"
-            Text="Reset"
-            HorizontalOptions="End"
-            Clicked="Reset_Clicked"
-            Style="{StaticResource GameButton}"
-            HeightRequest="40"
-            FontSize="12" />
+        <Grid Grid.Row="1" ColumnDefinitions="*,Auto">
+            <Label
+                Text="{Binding StatusText}"
+                Style="{StaticResource GameStatusLabel}"
+                Margin="0,0,0,10"/>
+            <Button
+                Grid.Column="1"
+                Text="🔄 Reset"
+                HorizontalOptions="End"
+                Clicked="Reset_Clicked"
+                Style="{StaticResource GameResetButton}"
+                HeightRequest="38"
+                FontSize="12" />
+        </Grid>
 
         <!-- Game Area -->
-        <AbsoluteLayout x:Name="GameLayout" Grid.Row="2" BackgroundColor="#F0F0F0">
-            <!-- Board Outline (Centered approx) -->
-            <Border 
-                AbsoluteLayout.LayoutBounds="20, 20, 300, 300"
-                AbsoluteLayout.LayoutFlags="None"
-                StrokeDashArray="5,5"
-                Stroke="#CCC"
-                StrokeThickness="2"
-                BackgroundColor="White">
-                <Label Text="Place Here" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#DDD" FontSize="24" />
-            </Border>
+        <Border Grid.Row="2" BackgroundColor="#FFF8F6FF" StrokeThickness="0" Padding="4">
+            <Border.StrokeShape><RoundRectangle CornerRadius="20" /></Border.StrokeShape>
+            <Border.Shadow>
+                <Shadow Brush="#20A66CFF" Offset="0,4" Opacity="0.2" Radius="10" />
+            </Border.Shadow>
+            <AbsoluteLayout x:Name="GameLayout">
+                <!-- Board Outline (Centered approx) -->
+                <Border 
+                    AbsoluteLayout.LayoutBounds="20, 20, 300, 300"
+                    AbsoluteLayout.LayoutFlags="None"
+                    StrokeDashArray="5,5"
+                    Stroke="{StaticResource GameLavender}"
+                    StrokeThickness="3"
+                    BackgroundColor="White">
+                    <Border.StrokeShape><RoundRectangle CornerRadius="12" /></Border.StrokeShape>
+                    <Label Text="📍 Place Here" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#D0D0D0" FontSize="22" FontAttributes="Bold" />
+                </Border>
 
-            <!-- Pieces Layer -->
-            <!-- We need to bind pieces dynamically to AbsoluteLayout Children. 
-                 BindableLayout works for Stack/Flex/Grid, but AbsoluteLayout is trickier.
-                 We can use a BindableLayout inside an AbsoluteLayout with custom positioned items? 
-                 No, standard BindableLayout creates a stack.
-                 Solution: Code-behind rendering or a custom Layout behavior.
-                 'GraphicsView' is good for this, but 'AbsoluteLayout' with Bindable behavior is easier for interactive controls.
-                 I'll use a hack: BindableLayout in a Grid (Overlay), but items have TranslationX/Y bound to CurrentX/Y.
-            -->
-            
-            <Grid AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
-                <BindableLayout.ItemsSource>
-                    <Binding Path="Pieces" />
-                </BindableLayout.ItemsSource>
-                <BindableLayout.ItemTemplate>
-                    <DataTemplate x:DataType="pageModels:JigsawPiece">
-                        <Image
-                            Source="{Binding Image}"
-                            HeightRequest="{Binding Height}"
-                            WidthRequest="{Binding Width}"
-                            TranslationX="{Binding CurrentX}"
-                            TranslationY="{Binding CurrentY}"
-                            ZIndex="{Binding ZIndex}"
-                            HorizontalOptions="Start"
-                            VerticalOptions="Start">
-                            <Image.GestureRecognizers>
-                                <PanGestureRecognizer PanUpdated="Piece_PanUpdated" />
-                            </Image.GestureRecognizers>
-                        </Image>
-                    </DataTemplate>
-                </BindableLayout.ItemTemplate>
-            </Grid>
-        </AbsoluteLayout>
+                <!-- Pieces Layer -->
+                <Grid AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                    <BindableLayout.ItemsSource>
+                        <Binding Path="Pieces" />
+                    </BindableLayout.ItemsSource>
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate x:DataType="pageModels:JigsawPiece">
+                            <Image
+                                Source="{Binding Image}"
+                                HeightRequest="{Binding Height}"
+                                WidthRequest="{Binding Width}"
+                                TranslationX="{Binding CurrentX}"
+                                TranslationY="{Binding CurrentY}"
+                                ZIndex="{Binding ZIndex}"
+                                HorizontalOptions="Start"
+                                VerticalOptions="Start">
+                                <Image.GestureRecognizers>
+                                    <PanGestureRecognizer PanUpdated="Piece_PanUpdated" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </Grid>
+            </AbsoluteLayout>
+        </Border>
     </Grid>
 </ContentPage>

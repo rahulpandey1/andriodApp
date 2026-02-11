@@ -4,18 +4,18 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:models="clr-namespace:FirstAndriodApp.Models"
-    Title="Shape Sorter">
+    Title="📦 Shape Sorter">
 
-    <Grid RowDefinitions="Auto,Auto,*,Auto" Padding="16" BackgroundColor="{StaticResource GameBackground}">
+    <Grid RowDefinitions="Auto,Auto,*,Auto" Padding="16" Background="{StaticResource GamePageGradient}">
         <Label
             Grid.Row="0"
-            Text="Sort the shapes!"
+            Text="📦 Sort the shapes!"
             Style="{StaticResource GameTitleLabel}" />
 
         <Button
             Grid.Row="1"
-            Text="Reset"
-            Style="{StaticResource GameButton}"
+            Text="🔄 Reset"
+            Style="{StaticResource GameResetButton}"
             HorizontalOptions="Center"
             Clicked="Reset_Clicked"
             Margin="0,10" />
@@ -25,46 +25,62 @@
             <FlexLayout BindableLayout.ItemsSource="{Binding Shapes}" Wrap="Wrap" JustifyContent="Center">
                 <BindableLayout.ItemTemplate>
                     <DataTemplate x:DataType="models:MatchItem">
-                        <Image
-                            Source="{Binding ObjectImage}"
-                            HeightRequest="80"
-                            WidthRequest="80"
-                            Margin="10">
-                            <Image.GestureRecognizers>
-                                <PanGestureRecognizer PanUpdated="Shape_PanUpdated" />
-                            </Image.GestureRecognizers>
-                        </Image>
+                        <Border BackgroundColor="White" StrokeThickness="0" Padding="8" Margin="8">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="16" />
+                            </Border.StrokeShape>
+                            <Border.Shadow>
+                                <Shadow Brush="#20000000" Offset="0,3" Opacity="0.15" Radius="6" />
+                            </Border.Shadow>
+                            <Image
+                                Source="{Binding ObjectImage}"
+                                HeightRequest="75"
+                                WidthRequest="75">
+                                <Image.GestureRecognizers>
+                                    <PanGestureRecognizer PanUpdated="Shape_PanUpdated" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </Border>
                     </DataTemplate>
                 </BindableLayout.ItemTemplate>
             </FlexLayout>
         </ScrollView>
 
         <!-- Bins Area -->
-        <Grid Grid.Row="3" ColumnDefinitions="*,*,*" HeightRequest="120" ColumnSpacing="10">
+        <Grid Grid.Row="3" ColumnDefinitions="*,*,*" HeightRequest="130" ColumnSpacing="10" Margin="0,0,0,10">
             <!-- Bin Circle -->
-            <Border Grid.Column="0" StrokeThickness="0" BackgroundColor="#E0E0E0" Padding="10">
-                <Border.StrokeShape><RoundRectangle CornerRadius="10" /></Border.StrokeShape>
-                <VerticalStackLayout>
-                    <Image Source="bin_circle.png" HeightRequest="60" WidthRequest="60" HorizontalOptions="Center" />
-                    <Label Text="Circle" HorizontalOptions="Center" />
+            <Border Grid.Column="0" StrokeThickness="0" BackgroundColor="#FFE0F0FF" Padding="12">
+                <Border.StrokeShape><RoundRectangle CornerRadius="18" /></Border.StrokeShape>
+                <Border.Shadow>
+                    <Shadow Brush="#2074C0FC" Offset="0,3" Opacity="0.3" Radius="6" />
+                </Border.Shadow>
+                <VerticalStackLayout Spacing="6">
+                    <Image Source="bin_circle.png" HeightRequest="55" WidthRequest="55" HorizontalOptions="Center" />
+                    <Label Text="⭕ Circle" HorizontalOptions="Center" FontAttributes="Bold" TextColor="{StaticResource GameSky}" FontSize="13" />
                 </VerticalStackLayout>
             </Border>
 
             <!-- Bin Square -->
-            <Border Grid.Column="1" StrokeThickness="0" BackgroundColor="#E0E0E0" Padding="10">
-                <Border.StrokeShape><RoundRectangle CornerRadius="10" /></Border.StrokeShape>
-                <VerticalStackLayout>
-                    <Image Source="bin_square.png" HeightRequest="60" WidthRequest="60" HorizontalOptions="Center" />
-                    <Label Text="Square" HorizontalOptions="Center" />
+            <Border Grid.Column="1" StrokeThickness="0" BackgroundColor="#FFE8FFE0" Padding="12">
+                <Border.StrokeShape><RoundRectangle CornerRadius="18" /></Border.StrokeShape>
+                <Border.Shadow>
+                    <Shadow Brush="#206BCB77" Offset="0,3" Opacity="0.3" Radius="6" />
+                </Border.Shadow>
+                <VerticalStackLayout Spacing="6">
+                    <Image Source="bin_square.png" HeightRequest="55" WidthRequest="55" HorizontalOptions="Center" />
+                    <Label Text="🟩 Square" HorizontalOptions="Center" FontAttributes="Bold" TextColor="{StaticResource GameSuccess}" FontSize="13" />
                 </VerticalStackLayout>
             </Border>
 
             <!-- Bin Triangle -->
-            <Border Grid.Column="2" StrokeThickness="0" BackgroundColor="#E0E0E0" Padding="10">
-                <Border.StrokeShape><RoundRectangle CornerRadius="10" /></Border.StrokeShape>
-                <VerticalStackLayout>
-                    <Image Source="bin_triangle.png" HeightRequest="60" WidthRequest="60" HorizontalOptions="Center" />
-                    <Label Text="Triangle" HorizontalOptions="Center" />
+            <Border Grid.Column="2" StrokeThickness="0" BackgroundColor="#FFFFF0E0" Padding="12">
+                <Border.StrokeShape><RoundRectangle CornerRadius="18" /></Border.StrokeShape>
+                <Border.Shadow>
+                    <Shadow Brush="#20FFD93D" Offset="0,3" Opacity="0.3" Radius="6" />
+                </Border.Shadow>
+                <VerticalStackLayout Spacing="6">
+                    <Image Source="bin_triangle.png" HeightRequest="55" WidthRequest="55" HorizontalOptions="Center" />
+                    <Label Text="🔺 Triangle" HorizontalOptions="Center" FontAttributes="Bold" TextColor="{StaticResource GamePeach}" FontSize="13" />
                 </VerticalStackLayout>
             </Border>
         </Grid>
