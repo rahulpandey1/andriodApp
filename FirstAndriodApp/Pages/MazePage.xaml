@@ -4,45 +4,54 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pageModels="clr-namespace:FirstAndriodApp.PageModels"
-    Title="Maze Runner">
+    Title="🏃 Maze Runner">
 
-    <Grid RowDefinitions="Auto,*,Auto" Padding="16" BackgroundColor="{StaticResource GameBackground}">
-        <Label
-             Grid.Row="0"
-             Text="{Binding StatusText}"
-             Style="{StaticResource GameTitleLabel}" />
+    <Grid RowDefinitions="Auto,*,Auto" Padding="16" Background="{StaticResource GamePageGradient}">
+        <VerticalStackLayout Grid.Row="0" Spacing="4">
+            <Label
+                Text="🏃 Maze Runner"
+                Style="{StaticResource GameTitleLabel}" />
+            <Label
+                Text="{Binding StatusText}"
+                Style="{StaticResource GameStatusLabel}" />
+        </VerticalStackLayout>
 
         <!-- Maze Grid -->
-        <CollectionView 
-            Grid.Row="1"
-            ItemsSource="{Binding Cells}"
-            VerticalOptions="Center"
-            HorizontalOptions="Center">
-            <CollectionView.ItemsLayout>
-                <GridItemsLayout Orientation="Vertical" Span="{Binding Cols}" HorizontalItemSpacing="1" VerticalItemSpacing="1" />
-            </CollectionView.ItemsLayout>
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="pageModels:MazeCell">
-                     <Grid HeightRequest="40" WidthRequest="40">
-                         <!-- Background (Wall/Path/Goal) -->
-                         <BoxView Color="{Binding Color}" />
-                         
-                         <!-- Player -->
-                         <Image Source="hero_face.png" IsVisible="{Binding IsPlayer}" Aspect="AspectFit" Margin="4"/>
-                         
-                         <!-- Goal Icon Overlay -->
-                         <Image Source="flag.png" IsVisible="{Binding IsGoal}" Aspect="AspectFit" Margin="4"/>
-                     </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+        <Border Grid.Row="1" BackgroundColor="White" StrokeThickness="0" Margin="8" Padding="4">
+            <Border.StrokeShape><RoundRectangle CornerRadius="20" /></Border.StrokeShape>
+            <Border.Shadow>
+                <Shadow Brush="#20000000" Offset="0,4" Opacity="0.15" Radius="10" />
+            </Border.Shadow>
+            <CollectionView 
+                ItemsSource="{Binding Cells}"
+                VerticalOptions="Center"
+                HorizontalOptions="Center">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="{Binding Cols}" HorizontalItemSpacing="1" VerticalItemSpacing="1" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="pageModels:MazeCell">
+                         <Grid HeightRequest="40" WidthRequest="40">
+                             <!-- Background (Wall/Path/Goal) -->
+                             <BoxView Color="{Binding Color}" />
+                             
+                             <!-- Player -->
+                             <Image Source="hero_face.png" IsVisible="{Binding IsPlayer}" Aspect="AspectFit" Margin="4"/>
+                             
+                             <!-- Goal Icon Overlay -->
+                             <Image Source="flag.png" IsVisible="{Binding IsGoal}" Aspect="AspectFit" Margin="4"/>
+                         </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Border>
 
         <!-- Controls -->
-        <Grid Grid.Row="2" ColumnDefinitions="*,*,*" RowDefinitions="*,*" HeightRequest="150" WidthRequest="200" HorizontalOptions="Center" Margin="0,0,0,20">
-            <Button Grid.Row="0" Grid.Column="1" Text="▲" Command="{Binding MoveUpCommand}" Style="{StaticResource GameButton}" />
-            <Button Grid.Row="1" Grid.Column="0" Text="◄" Command="{Binding MoveLeftCommand}" Style="{StaticResource GameButton}" />
-            <Button Grid.Row="1" Grid.Column="1" Text="▼" Command="{Binding MoveDownCommand}" Style="{StaticResource GameButton}" />
-            <Button Grid.Row="1" Grid.Column="2" Text="►" Command="{Binding MoveRightCommand}" Style="{StaticResource GameButton}" />
+        <Grid Grid.Row="2" ColumnDefinitions="*,*,*" RowDefinitions="*,*" HeightRequest="140" WidthRequest="220" HorizontalOptions="Center" Margin="0,0,0,20" ColumnSpacing="8" RowSpacing="8">
+            <Button Grid.Row="0" Grid.Column="1" Text="⬆️" Command="{Binding MoveUpCommand}" BackgroundColor="{StaticResource GameSky}" TextColor="White" CornerRadius="18" FontSize="24" />
+            <Button Grid.Row="1" Grid.Column="0" Text="⬅️" Command="{Binding MoveLeftCommand}" BackgroundColor="{StaticResource GamePeach}" TextColor="White" CornerRadius="18" FontSize="24" />
+            <Button Grid.Row="1" Grid.Column="1" Text="⬇️" Command="{Binding MoveDownCommand}" BackgroundColor="{StaticResource GameSky}" TextColor="White" CornerRadius="18" FontSize="24" />
+            <Button Grid.Row="1" Grid.Column="2" Text="➡️" Command="{Binding MoveRightCommand}" BackgroundColor="{StaticResource GamePeach}" TextColor="White" CornerRadius="18" FontSize="24" />
         </Grid>
     </Grid>
 </ContentPage>

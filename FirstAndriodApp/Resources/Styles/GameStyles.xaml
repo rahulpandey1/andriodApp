@@ -2,44 +2,134 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
-    <!-- Kid-Friendly Color Palette -->
-    <Color x:Key="GamePrimary">#FF6B6B</Color>      <!-- Soft Red -->
-    <Color x:Key="GameSecondary">#4ECDC4</Color>    <!-- Teal/Turquoise -->
-    <Color x:Key="GameAccent">#FFE66D</Color>       <!-- Pastel Yellow -->
-    <Color x:Key="GameBackground">#F7FFF7</Color>   <!-- Off-white Mint -->
-    <Color x:Key="GameText">#292F36</Color>         <!-- Dark Charcoal -->
+    <!-- ============================================ -->
+    <!-- Kid-Friendly Candy-Inspired Color Palette    -->
+    <!-- ============================================ -->
+    <Color x:Key="GamePrimary">#FF6B8A</Color>         <!-- Candy Pink -->
+    <Color x:Key="GameSecondary">#45D9C8</Color>       <!-- Mint Turquoise -->
+    <Color x:Key="GameAccent">#FFD93D</Color>           <!-- Sunshine Yellow -->
+    <Color x:Key="GameBackground">#F0F4FF</Color>       <!-- Soft Lavender White -->
+    <Color x:Key="GameText">#2D3436</Color>             <!-- Charcoal -->
     
-    <Color x:Key="GameSuccess">#95D5B2</Color>      <!-- Success Green -->
-    <Color x:Key="GameError">#FF9F1C</Color>        <!-- Warning Orange -->
+    <Color x:Key="GameSuccess">#6BCB77</Color>          <!-- Fresh Green -->
+    <Color x:Key="GameError">#FF8C42</Color>            <!-- Warm Orange -->
+    
+    <!-- Extra Playful Colors -->
+    <Color x:Key="GamePurple">#A66CFF</Color>           <!-- Soft Purple -->
+    <Color x:Key="GameCoral">#FF6B6B</Color>            <!-- Coral Red -->
+    <Color x:Key="GameSky">#74C0FC</Color>              <!-- Sky Blue -->
+    <Color x:Key="GameLime">#A8E063</Color>             <!-- Lime Green -->
+    <Color x:Key="GamePeach">#FFAB76</Color>            <!-- Peach -->
+    <Color x:Key="GameLavender">#D4A5FF</Color>         <!-- Lavender -->
+    <Color x:Key="GameMint">#7DEDCC</Color>             <!-- Mint -->
+    <Color x:Key="GameRose">#FFB3C6</Color>             <!-- Rose Pink -->
+    
+    <!-- Gradient Brushes for Game Backgrounds -->
+    <LinearGradientBrush x:Key="GamePageGradient" StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Color="#E8F4FD" Offset="0.0" />
+        <GradientStop Color="#F0E6FF" Offset="0.5" />
+        <GradientStop Color="#FFF0F5" Offset="1.0" />
+    </LinearGradientBrush>
+    
+    <LinearGradientBrush x:Key="GameSkyGradient" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#87CEEB" Offset="0.0" />
+        <GradientStop Color="#E0F7FA" Offset="0.7" />
+        <GradientStop Color="#FFF9C4" Offset="1.0" />
+    </LinearGradientBrush>
+    
+    <LinearGradientBrush x:Key="GameSunsetGradient" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#FFECD2" Offset="0.0" />
+        <GradientStop Color="#FCB69F" Offset="1.0" />
+    </LinearGradientBrush>
 
-    <!-- Styles -->
+    <LinearGradientBrush x:Key="GameCardGradient1" StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Color="#FF6B8A" Offset="0.0" />
+        <GradientStop Color="#FF8E72" Offset="1.0" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="GameCardGradient2" StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Color="#45D9C8" Offset="0.0" />
+        <GradientStop Color="#74C0FC" Offset="1.0" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="GameCardGradient3" StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Color="#A66CFF" Offset="0.0" />
+        <GradientStop Color="#D4A5FF" Offset="1.0" />
+    </LinearGradientBrush>
+
+    <!-- ============================================ -->
+    <!-- Styles                                       -->
+    <!-- ============================================ -->
     <Style x:Key="GameTitleLabel" TargetType="Label">
         <Setter Property="TextColor" Value="{StaticResource GamePrimary}" />
-        <Setter Property="FontSize" Value="28" />
+        <Setter Property="FontSize" Value="30" />
         <Setter Property="FontAttributes" Value="Bold" />
         <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="FontFamily" Value="OpenSansSemibold" />
     </Style>
 
     <Style x:Key="GameButton" TargetType="Button">
         <Setter Property="BackgroundColor" Value="{StaticResource GameSecondary}" />
         <Setter Property="TextColor" Value="White" />
-        <Setter Property="CornerRadius" Value="25" />
+        <Setter Property="CornerRadius" Value="28" />
         <Setter Property="FontSize" Value="20" />
-        <Setter Property="Padding" Value="20,10" />
+        <Setter Property="Padding" Value="24,12" />
         <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontFamily" Value="OpenSansSemibold" />
         <Setter Property="Shadow">
-            <Shadow Brush="Black" Offset="2,2" Opacity="0.2" />
+            <Shadow Brush="#4045D9C8" Offset="0,4" Opacity="0.4" Radius="8" />
         </Setter>
+    </Style>
+
+    <Style x:Key="GameScoreLabel" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource GamePurple}" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontFamily" Value="OpenSansSemibold" />
+    </Style>
+
+    <Style x:Key="GameStatusLabel" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource GameText}" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="Opacity" Value="0.7" />
     </Style>
     
     <Style x:Key="GameCard" TargetType="Border">
         <Setter Property="StrokeShape">
-            <RoundRectangle CornerRadius="20" />
+            <RoundRectangle CornerRadius="24" />
         </Setter>
-        <Setter Property="Stroke" Value="{StaticResource GameSecondary}" />
-        <Setter Property="StrokeThickness" Value="4" />
+        <Setter Property="Stroke" Value="Transparent" />
+        <Setter Property="StrokeThickness" Value="0" />
         <Setter Property="BackgroundColor" Value="White" />
-        <Setter Property="Padding" Value="10" />
+        <Setter Property="Padding" Value="12" />
+        <Setter Property="Shadow">
+            <Shadow Brush="#20000000" Offset="0,4" Opacity="0.2" Radius="12" />
+        </Setter>
+    </Style>
+
+    <Style x:Key="GameResetButton" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="{StaticResource GameCoral}" />
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="Padding" Value="20,8" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="Shadow">
+            <Shadow Brush="#40FF6B6B" Offset="0,3" Opacity="0.3" Radius="6" />
+        </Setter>
+    </Style>
+
+    <Style x:Key="GameDoneButton" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="{StaticResource GameSuccess}" />
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="Padding" Value="20,8" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="Shadow">
+            <Shadow Brush="#406BCB77" Offset="0,3" Opacity="0.3" Radius="6" />
+        </Setter>
     </Style>
 
 </ResourceDictionary>

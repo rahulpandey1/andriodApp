@@ -4,44 +4,50 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:models="clr-namespace:FirstAndriodApp.Models"
-    Title="Match It">
+    Title="🧩 Match It">
 
-    <Grid RowDefinitions="Auto,Auto,Auto,*" Padding="16">
+    <Grid RowDefinitions="Auto,Auto,Auto,*" Padding="16" Background="{StaticResource GamePageGradient}">
         <Label
             Grid.Row="0"
-            Text="Drag the colored image to match its hollow picture"
-            FontSize="18"
-            FontAttributes="Bold"
-            HorizontalTextAlignment="Center" />
+            Text="🧩 Drag to match!"
+            Style="{StaticResource GameTitleLabel}" />
 
         <Label
             Grid.Row="1"
             Margin="0,8,0,12"
             Text="{Binding StatusText}"
-            FontSize="16"
-            HorizontalTextAlignment="Center" />
+            Style="{StaticResource GameStatusLabel}" />
 
         <Button
             Grid.Row="2"
-            Text="Reset"
+            Text="🔄 Reset"
+            Style="{StaticResource GameResetButton}"
             HorizontalOptions="Center"
             Clicked="Reset_Clicked" />
 
         <!-- Game area with overlay drag layer -->
-        <Grid Grid.Row="3">
-            <Grid ColumnDefinitions="*,*" ColumnSpacing="16">
-                <Frame Grid.Column="0" Padding="10" CornerRadius="12" BackgroundColor="#FFF8F8F8">
+        <Grid Grid.Row="3" Margin="0,12,0,0">
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="14">
+                <!-- Left: Colored Objects -->
+                <Border Grid.Column="0" Padding="10" BackgroundColor="#FFFFF0F5" StrokeThickness="0">
+                    <Border.StrokeShape><RoundRectangle CornerRadius="20" /></Border.StrokeShape>
+                    <Border.Shadow>
+                        <Shadow Brush="#20FF6B8A" Offset="0,3" Opacity="0.15" Radius="8" />
+                    </Border.Shadow>
                     <VerticalStackLayout x:Name="LeftStack" Spacing="12" BindableLayout.ItemsSource="{Binding LeftItems}">
                         <BindableLayout.ItemTemplate>
                             <DataTemplate x:DataType="models:MatchItem">
                                 <Border
                                     Padding="8"
                                     BackgroundColor="White"
-                                    Stroke="#E0E0E0"
+                                    Stroke="{StaticResource GamePrimary}"
                                     StrokeThickness="2">
                                     <Border.StrokeShape>
-                                        <RoundRectangle CornerRadius="12" />
+                                        <RoundRectangle CornerRadius="16" />
                                     </Border.StrokeShape>
+                                    <Border.Shadow>
+                                        <Shadow Brush="#20FF6B8A" Offset="0,2" Opacity="0.1" Radius="4" />
+                                    </Border.Shadow>
                                     <Image
                                         Source="{Binding ObjectImage}"
                                         HeightRequest="90"
@@ -55,19 +61,24 @@
                             </DataTemplate>
                         </BindableLayout.ItemTemplate>
                     </VerticalStackLayout>
-                </Frame>
+                </Border>
 
-                <Frame Grid.Column="1" Padding="10" CornerRadius="12" BackgroundColor="#FFF0F0F0">
+                <!-- Right: Hollow Targets -->
+                <Border Grid.Column="1" Padding="10" BackgroundColor="#FFF5F0FF" StrokeThickness="0">
+                    <Border.StrokeShape><RoundRectangle CornerRadius="20" /></Border.StrokeShape>
+                    <Border.Shadow>
+                        <Shadow Brush="#20A66CFF" Offset="0,3" Opacity="0.1" Radius="8" />
+                    </Border.Shadow>
                     <VerticalStackLayout x:Name="RightStack" Spacing="12" BindableLayout.ItemsSource="{Binding RightItems}">
                         <BindableLayout.ItemTemplate>
                             <DataTemplate x:DataType="models:MatchItem">
                                 <Border
                                     Padding="8"
-                                    BackgroundColor="#FFEFEFEF"
-                                    Stroke="#D0D0D0"
+                                    BackgroundColor="#FFF8F5FF"
+                                    Stroke="#E0D0F0"
                                     StrokeThickness="2">
                                     <Border.StrokeShape>
-                                        <RoundRectangle CornerRadius="12" />
+                                        <RoundRectangle CornerRadius="16" />
                                     </Border.StrokeShape>
                                     <Image
                                         Source="{Binding ShadowImage}"
@@ -78,7 +89,7 @@
                             </DataTemplate>
                         </BindableLayout.ItemTemplate>
                     </VerticalStackLayout>
-                </Frame>
+                </Border>
             </Grid>
 
             <!-- Overlay used to render the dragged image above everything -->

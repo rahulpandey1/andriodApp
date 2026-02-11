@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
+using Plugin.Maui.Audio;
 using Syncfusion.Maui.Toolkit.Hosting;
 using FirstAndriodApp.Pages;
 using FirstAndriodApp.PageModels;
@@ -57,6 +58,7 @@ namespace FirstAndriodApp
             builder.Services.AddSingleton<MatchItPageModel>();
 
             // Game Services
+            builder.Services.AddSingleton(AudioManager.Current);
             builder.Services.AddSingleton<IAudioService, AudioService>();
             builder.Services.AddSingleton<IGameManager, GameManager>();
             builder.Services.AddSingleton<LevelService>();
