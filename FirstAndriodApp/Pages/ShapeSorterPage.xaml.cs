@@ -124,4 +124,11 @@ public partial class ShapeSorterPage : ContentPage
         while (parent != null && parent != this) { x += parent.X + parent.TranslationX; y += parent.Y + parent.TranslationY; parent = parent.Parent as VisualElement; }
         return new Point(x, y);
     }
+
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+        if (Content != null)
+            await FirstAndriodApp.Utilities.AnimationHelper.PageEntrance(Content);
+    }
 }

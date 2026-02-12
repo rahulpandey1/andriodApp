@@ -10,6 +10,13 @@ public partial class PuzzleSliderPage : ContentPage
         InitializeComponent();
         BindingContext = model;
     }
+
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+        if (Content != null)
+            await FirstAndriodApp.Utilities.AnimationHelper.PageEntrance(Content);
+    }
 }
 
 public class BoolToColorConverter : IValueConverter

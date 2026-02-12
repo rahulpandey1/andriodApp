@@ -13,9 +13,12 @@ public partial class FruitCatchPage : ContentPage
         _model = model;
     }
 
-    protected override void OnAppearing()
+    protected override async void OnAppearing()
     {
         base.OnAppearing();
+        if (Content != null)
+            await FirstAndriodApp.Utilities.AnimationHelper.PageEntrance(Content);
+
         var timer = Application.Current.Dispatcher.CreateTimer();
         _model.StartGame(timer);
         

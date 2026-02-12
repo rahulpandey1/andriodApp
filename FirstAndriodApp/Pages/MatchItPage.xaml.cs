@@ -257,9 +257,8 @@ public partial class MatchItPage : ContentPage
         var border = FindBorderForItem(item);
         if (border != null)
         {
+            await FirstAndriodApp.Utilities.AnimationHelper.CelebrationBurst(border);
             border.BackgroundColor = Color.FromArgb("#C8E6C9");
-            await border.ScaleTo(1.15, 100);
-            await border.ScaleTo(1.0, 100);
         }
     }
 
@@ -268,14 +267,14 @@ public partial class MatchItPage : ContentPage
         var border = FindBorderForItem(item);
         if (border != null)
         {
-            border.BackgroundColor = Color.FromArgb("#FFCDD2");
-            var original = border.TranslationX;
-
-            await border.TranslateTo(original - 8, 0, 50);
-            await border.TranslateTo(original + 8, 0, 50);
-            await border.TranslateTo(original, 0, 50);
-
-            border.BackgroundColor = Color.FromArgb("#FFEFEFEF");
+            await FirstAndriodApp.Utilities.AnimationHelper.ErrorFlash(border);
         }
+    }
+
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+        if (Content != null)
+            await FirstAndriodApp.Utilities.AnimationHelper.PageEntrance(Content);
     }
 }

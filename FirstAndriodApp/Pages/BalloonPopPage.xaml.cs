@@ -13,9 +13,11 @@ public partial class BalloonPopPage : ContentPage
         _model = model;
     }
 
-    protected override void OnAppearing()
+    protected override async void OnAppearing()
     {
         base.OnAppearing();
+        if (Content != null) 
+            await FirstAndriodApp.Utilities.AnimationHelper.PageEntrance(Content);
         
         GameArea.SizeChanged += (s, e) => 
         {

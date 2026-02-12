@@ -87,6 +87,13 @@ public partial class ConnectDotsPage : ContentPage
         }
         return null;
     }
+
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+        if (Content != null)
+            await FirstAndriodApp.Utilities.AnimationHelper.PageEntrance(Content);
+    }
 }
 
 public class ConnectDrawable : IDrawable

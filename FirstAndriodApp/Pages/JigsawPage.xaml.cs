@@ -58,4 +58,11 @@ public partial class JigsawPage : ContentPage
                 break;
         }
     }
+
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+        if (Content != null)
+            await FirstAndriodApp.Utilities.AnimationHelper.PageEntrance(Content);
+    }
 }

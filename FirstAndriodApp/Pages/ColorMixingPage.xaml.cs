@@ -9,4 +9,11 @@ public partial class ColorMixingPage : ContentPage
         InitializeComponent();
         BindingContext = model;
     }
+
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+        if (Content != null)
+            await FirstAndriodApp.Utilities.AnimationHelper.PageEntrance(Content);
+    }
 }

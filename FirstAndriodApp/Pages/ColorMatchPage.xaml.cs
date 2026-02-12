@@ -15,4 +15,11 @@ public partial class ColorMatchPage : ContentPage
         if (BindingContext is ColorMatchPageModel model)
             model.Reset();
     }
+
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+        if (Content != null)
+            await FirstAndriodApp.Utilities.AnimationHelper.PageEntrance(Content);
+    }
 }

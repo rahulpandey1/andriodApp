@@ -6,7 +6,20 @@
     xmlns:sf="clr-namespace:Syncfusion.Maui.Toolkit.SegmentedControl;assembly=Syncfusion.Maui.Toolkit"
     xmlns:pages="clr-namespace:FirstAndriodApp.Pages"
     Shell.FlyoutBehavior="Flyout"
-    Title="FirstAndriodApp">
+    Shell.FlyoutBackgroundColor="#F0F4FF"
+    Shell.BackgroundColor="{StaticResource GamePrimary}"
+    Shell.ForegroundColor="White"
+    Shell.TitleColor="White"
+    Title="Kids Fun Games">
+
+    <Shell.FlyoutHeader>
+        <Grid Background="{StaticResource GamePageGradient}" Padding="20,30,20,20" HeightRequest="120">
+            <VerticalStackLayout VerticalOptions="Center" Spacing="4">
+                <Label Text="🎮 Kids Fun Games" FontSize="24" FontAttributes="Bold" TextColor="{StaticResource GamePrimary}" />
+                <Label Text="Learn, Play and Have Fun!" FontSize="13" TextColor="{StaticResource GameText}" Opacity="0.7" />
+            </VerticalStackLayout>
+        </Grid>
+    </Shell.FlyoutHeader>
 
     <ShellContent
         Title="Games"

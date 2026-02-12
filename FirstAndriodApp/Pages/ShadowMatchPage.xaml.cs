@@ -125,6 +125,37 @@ public partial class ShadowMatchPage : ContentPage
         return new Point(x, y);
     }
 
-    async Task AnimateSuccessAsync(MatchItem item) { /* Animation */ }
-    async Task ShakeTargetAsync(MatchItem item) { /* Animation */ }
+    async Task AnimateSuccessAsync(MatchItem item)
+    {
+        if (RightStack == null) return;
+        foreach (var child in RightStack.Children)
+        {
+            if (child is Border border && border.BindingContext is MatchItem mi && mi.Id == item.Id)
+            {
+                await FirstAndriodApp.Utilities.AnimationHelper.CelebrationBurst(border);
+                border.BackgroundColor = Color.FromArgb("#C8E6C9");
+                break;
+            }
+        }
+    }
+
+    async Task ShakeTargetAsync(MatchItem item)
+    {
+        if (RightStack == null) return;
+        foreach (var child in RightStack.Children)
+        {
+            if (child is Border border && border.BindingContext is MatchItem mi && mi.Id == item.Id)
+            {
+                await FirstAndriodApp.Utilities.AnimationHelper.ErrorFlash(border);
+                break;
+            }
+        }
+    }
+
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+        if (Content != null)
+            await FirstAndriodApp.Utilities.AnimationHelper.PageEntrance(Content);
+    }
 }

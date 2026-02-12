@@ -132,4 +132,54 @@
         </Setter>
     </Style>
 
+    <!-- ============================================ -->
+    <!-- Celebration & Feedback Styles                -->
+    <!-- ============================================ -->
+
+    <!-- Celebration Gradient (gold to warm orange) -->
+    <LinearGradientBrush x:Key="CelebrationGradient" StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Color="#FFD93D" Offset="0.0" />
+        <GradientStop Color="#FF8C42" Offset="0.5" />
+        <GradientStop Color="#FF6B8A" Offset="1.0" />
+    </LinearGradientBrush>
+
+    <!-- Confetti Colors -->
+    <Color x:Key="Confetti1">#FF6B8A</Color>
+    <Color x:Key="Confetti2">#45D9C8</Color>
+    <Color x:Key="Confetti3">#FFD93D</Color>
+    <Color x:Key="Confetti4">#A66CFF</Color>
+    <Color x:Key="Confetti5">#FF8C42</Color>
+
+    <!-- Night/Dark game gradient (for darker themed games) -->
+    <LinearGradientBrush x:Key="GameNightGradient" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#1A1A2E" Offset="0.0" />
+        <GradientStop Color="#16213E" Offset="0.5" />
+        <GradientStop Color="#0F3460" Offset="1.0" />
+    </LinearGradientBrush>
+
+    <!-- Forest gradient (for nature-themed games) -->
+    <LinearGradientBrush x:Key="GameForestGradient" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#E8F5E9" Offset="0.0" />
+        <GradientStop Color="#C8E6C9" Offset="0.5" />
+        <GradientStop Color="#A5D6A7" Offset="1.0" />
+    </LinearGradientBrush>
+
+    <Style x:Key="GameScoreBadge" TargetType="Border">
+        <Setter Property="BackgroundColor" Value="#30FFFFFF" />
+        <Setter Property="StrokeThickness" Value="0" />
+        <Setter Property="Padding" Value="14,8" />
+    </Style>
+
+    <Style x:Key="GameProgressBar" TargetType="ProgressBar">
+        <Setter Property="ProgressColor" Value="{StaticResource GameSuccess}" />
+        <Setter Property="HeightRequest" Value="8" />
+    </Style>
+
+    <Style x:Key="CelebrationLabel" TargetType="Label">
+        <Setter Property="FontSize" Value="48" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+    </Style>
+
 </ResourceDictionary>
+

@@ -17,12 +17,34 @@ public partial class MemoryFlipPage : ContentPage
 
     async void Card_Clicked(object sender, EventArgs e)
     {
-        if (((Button)sender).CommandParameter is not MemoryCard card)
+        var button = (Button)sender;
+        if (button.CommandParameter is not MemoryCard card)
             return;
 
+        // Fire-and-forget tap feedback — does NOT delay the flip
+        var cardContainer = (button.Parent as Grid)?.Parent as Border;
+        if (cardContainer != null)
+            FirstAndriodApp.Utilities.AnimationHelper.TapBounce(cardContainer);
+
+        // Flip the card immediately
         await Model.FlipAsync(card);
 
+        // Quick celebration if matched (after flip completes)
+        if (card.IsMatched && cardContainer != null)
+        {
+            _ = FirstAndriodApp.Utilities.AnimationHelper.CelebrationBurst(cardContainer);
+        }
+
         if (Model.IsCompleted)
-            await DisplayAlert("Completed", $"You finished in {Model.Moves} moves!", "OK");
+        {
+            await DisplayAlert("🎉 Amazing!", $"You finished in {Model.Moves} moves! ⭐", "OK");
+        }
+    }
+
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+        if (Content != null)
+            await FirstAndriodApp.Utilities.AnimationHelper.PageEntrance(Content);
     }
 }

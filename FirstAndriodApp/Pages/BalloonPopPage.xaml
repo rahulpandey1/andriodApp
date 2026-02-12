@@ -7,14 +7,22 @@
     Title="🎈 Balloon Pop">
 
     <Grid RowDefinitions="Auto,*" Background="{StaticResource GameSkyGradient}">
-        <VerticalStackLayout Grid.Row="0" Padding="16,12" Spacing="4">
-            <Label
-                Text="🎈 Balloon Pop!"
-                Style="{StaticResource GameTitleLabel}" />
-            <Label
-                Text="{Binding StatusText}"
-                Style="{StaticResource GameStatusLabel}" />
-        </VerticalStackLayout>
+        <Grid Grid.Row="0" Padding="16,12" ColumnDefinitions="*,Auto" ColumnSpacing="12">
+            <VerticalStackLayout Spacing="4">
+                <Label
+                    Text="🎈 Balloon Pop!"
+                    Style="{StaticResource GameTitleLabel}" />
+                <Label
+                    Text="{Binding StatusText}"
+                    Style="{StaticResource GameStatusLabel}" />
+            </VerticalStackLayout>
+            <Border Grid.Column="1" BackgroundColor="#30FFFFFF" StrokeThickness="0" Padding="12,6" VerticalOptions="Center">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="16" />
+                </Border.StrokeShape>
+                <Label Text="{Binding Score, StringFormat='⭐ {0}'}" FontSize="20" FontAttributes="Bold" TextColor="White" />
+            </Border>
+        </Grid>
 
         <!-- Game Area -->
         <AbsoluteLayout Grid.Row="1" x:Name="GameArea">
